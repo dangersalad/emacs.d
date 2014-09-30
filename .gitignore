@@ -1,0 +1,15 @@
+.#*
+*~
+*#
+ac-comphist.dat
+elpa/
+newsticker/
+tmp/
+url/
+*.elc
+/email-settings.el
+/erc-settings.el
+node_modules/
+/session*
+tramp
+/projectile-bookmarks.eld
