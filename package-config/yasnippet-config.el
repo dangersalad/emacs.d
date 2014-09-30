@@ -5,6 +5,8 @@
 
 ;;; Code:
 
+(defvar my-snippets (concat my-local-dir "/snippets") "Local, non git controlled snippets.")
+(make-directory my-snippets t)
 (setq yas-snippet-dirs
       (append yas-snippet-dirs
               '("~/.emacs.d/local/snippets"))) ;add local snippets

@@ -14,6 +14,7 @@
 (defvar my-autosave "~/.emacs.d/tmp/autosave" "Where autosaves go.")
 (defvar my-package-configs "~/.emacs.d/package-config" "Configuration for MELPA packages.")
 (defvar my-keybindings "~/.emacs.d/keybindings" "Custom keybindings, kept here for easier viewing rather than each package's config.")
+(defvar my-local-dir "~/.emacs.d/local" "Directory for local, non git controlled files.")
 
 ;; my load path
 (add-to-list 'load-path my-custom-lib)
