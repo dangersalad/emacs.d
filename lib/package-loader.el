@@ -21,22 +21,29 @@
         when (not (package-installed-p p)) do (return nil)
         finally (return t)))
 
-;; if there are missing packages, install them
-(unless (packages-installed-p)
-  ;; check for new packages
-  (message "%s" "Refreshing packages")
-  (package-refresh-contents)
-  (message "%s" "done")
-  ;; install missing packages
-  (dolist (p my-packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
+(defun install-missing-packages ()
+  "Look for packages defined in `my-packages' and install them if they are not already installed."
+  (unless (packages-installed-p)
+    ;; check for new packages
+    (message "%s" "Refreshing packages")
+    (package-refresh-contents)
+    (message "%s" "done")
+    ;; install missing packages
+    (dolist (p my-packages)
+      (when (not (package-installed-p p))
+        (package-install p)))))
 
-(loop for package-name in my-packages
-      do (let ((package-file (concat "~/.emacs.d/package-config/" (symbol-name package-name) "-config.el")))
-           (if (file-readable-p package-file)
-             (progn (message "loading config") (load package-file))
-             (progn (message "requiring package") (require package-name)))))
+(defun my-package-init ()
+  "Load configs for `my-packages`.
+
+Loop through packages defined in `my-packages' and either load an
+init file at ~/.emacs.d/package-config/<package-name>-config.el
+or simple require the package."
+  (loop for package-name in my-packages
+        do (let ((package-file (concat "~/.emacs.d/package-config/" (symbol-name package-name) "-config.el")))
+             (if (file-readable-p package-file)
+                 (progn (message "Loading config for %s" (symbol-name package-name)) (load package-file))
+               (progn (message "Requiring package %s" (symbol-name package-name)) (require package-name))))))
 
 (provide 'package-loader)
 

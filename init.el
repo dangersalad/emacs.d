@@ -156,6 +156,12 @@
 (defvar erc-hide-list '("JOIN" "PART" "QUIT"))
 (require 'erc)
 
+;; init packages
+(message "Looking for missing packages")
+(install-missing-packages)
+(message "Loading package configurations")
+(my-package-init)
+
 ;; load keybindings
 (load "~/.emacs.d/keybindings")
 
