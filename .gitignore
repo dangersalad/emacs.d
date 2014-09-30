@@ -8,7 +8,7 @@ newsticker/
 tmp/
 url/
 *.elc
-/email-settings.el
+/email/email-settings.el
 /erc-settings.el
 node_modules/
 /session*

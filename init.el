@@ -165,6 +165,9 @@
 ;; load keybindings
 (load "~/.emacs.d/keybindings")
 
+;; load email configuration
+(load "~/.emacs.d/email/email-config")
+
 ;; diminished mode line
 (diminish 'js2-minor-mode)
 (diminish 'undo-tree-mode (string 32 #x236b))

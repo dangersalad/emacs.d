@@ -5,9 +5,10 @@
 
 ;;; Code:
 
-(defvar user-email-settings "~/.emacs.d/email/email-settings.el" "Email settings for the user not controlled by git")
+(defvar user-email-settings "~/.emacs.d/email/email-settings.el" "Email settings for the user not controlled by git.")
 (if (file-readable-p user-email-settings)
     (progn
+      (message "Found email settings")
       (load user-email-settings)
 
       (when (require 'mu4e nil 'noerror)
@@ -60,7 +61,8 @@
             (nreverse buffers)))
         
         (setq gnus-dired-mail-mode 'mu4e-user-agent)
-        (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode))))
+        (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)))
+    (message "No file at %s, skipping email configuration" user-email-settings))
 
 
 ;;; email-config.el ends here
