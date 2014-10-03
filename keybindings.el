@@ -16,4 +16,6 @@
 (global-set-key (kbd "C-c C-/ C-c") 'evilnc-copy-and-comment-lines)
 (global-set-key (kbd "C-c C-/ C-p") 'evilnc-comment-or-uncomment-paragraphs)
 
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
 ;;; keybindings.el ends here
