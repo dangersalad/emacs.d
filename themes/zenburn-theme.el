@@ -151,7 +151,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(vertical-border ((t (:foreground ,zenburn-fg))))
 ;;;;; font lock
    `(font-lock-builtin-face ((t (:foreground ,zenburn-fg :weight bold))))
-   `(font-lock-comment-face ((t (:foreground ,zenburn-green))))
+   `(font-lock-comment-face ((t (:foreground ,zenburn-green :slant italic))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,zenburn-green-1))))
    `(font-lock-constant-face ((t (:foreground ,zenburn-green+4))))
    `(font-lock-doc-face ((t (:foreground ,zenburn-green+2))))
@@ -163,7 +163,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-regexp-grouping-backslash ((t (:foreground ,zenburn-green :weight bold))))
    `(font-lock-string-face ((t (:foreground ,zenburn-red))))
    `(font-lock-type-face ((t (:foreground ,zenburn-blue-1))))
-   `(font-lock-variable-name-face ((t (:foreground ,zenburn-orange))))
+   `(font-lock-variable-name-face ((t (:foreground ,zenburn-orange :weight bold))))
    `(font-lock-warning-face ((t (:foreground ,zenburn-yellow-2 :weight bold))))
 
    `(c-annotation-face ((t (:inherit font-lock-constant-face))))
@@ -309,16 +309,16 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(flx-highlight-face ((t (:foreground ,zenburn-green+2 :weight bold))))
 ;;;;; flycheck
    `(flycheck-error
-     ((((supports :underline (:style wave)))
-       (:underline (:style wave :color ,zenburn-red-1) :inherit unspecified))
+     ((((supports :underline (:style line)))
+       (:underline (:style line :color ,zenburn-red-1) :inherit unspecified))
       (t (:foreground ,zenburn-red-1 :weight bold :underline t))))
    `(flycheck-warning
-     ((((supports :underline (:style wave)))
-       (:underline (:style wave :color ,zenburn-yellow) :inherit unspecified))
+     ((((supports :underline (:style line)))
+       (:underline (:style line :color ,zenburn-yellow) :inherit unspecified))
       (t (:foreground ,zenburn-yellow :weight bold :underline t))))
    `(flycheck-info
-     ((((supports :underline (:style wave)))
-       (:underline (:style wave :color ,zenburn-cyan) :inherit unspecified))
+     ((((supports :underline (:style line)))
+       (:underline (:style line :color ,zenburn-cyan) :inherit unspecified))
       (t (:foreground ,zenburn-cyan :weight bold :underline t))))
    `(flycheck-fringe-error ((t (:foreground ,zenburn-red-1 :weight bold))))
    `(flycheck-fringe-warning ((t (:foreground ,zenburn-yellow :weight bold))))
