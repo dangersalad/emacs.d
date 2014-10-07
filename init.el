@@ -88,6 +88,8 @@
     (indent-according-to-mode)
     (delete-trailing-whitespace)))
 
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; backup settings
 ;; setup directories
 (make-directory my-backups t)
