@@ -88,7 +88,10 @@
     (indent-according-to-mode)
     (delete-trailing-whitespace)))
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook (lambda ()
+                              (if (equal major-mode 'markdown-mode)
+                                  (message "Retaining whitespace")
+                                (delete-trailing-whitespace))))
 
 ;; backup settings
 ;; setup directories
