@@ -43,7 +43,11 @@
                       imenu-anywhere
                       web-mode
                       stripe-buffer
+                      evil
+                      evil-surround
+                      evil-leader
                       evil-nerd-commenter
+                      key-chord
                       visual-regexp
                       projectile
                       yasnippet)
