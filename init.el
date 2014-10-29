@@ -75,7 +75,7 @@
 
 ;; scroll less aggressivly
 (setq scroll-step 1)
-(setq scroll-margin 10)
+(setq scroll-margin 1)
 
 ;; no lock files (fucks with git and grunt)
 (setq-default create-lockfiles nil)
