@@ -18,9 +18,11 @@
 (org-agenda-reload)
 (setq org-agenda-file-regexp "\\([^.].*\\.org\\)\\|\\([0-9]+\\)")
 ;; keybindings
-(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map (kbd "C-c a") 'org-agenda)
 (require 'org)
+
 (setq org-log-done 'time)
 
-
+(setq org-todo-keywords
+  '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE")))
 ;;; org-mode-config.el ends here
