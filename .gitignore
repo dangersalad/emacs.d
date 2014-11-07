@@ -15,3 +15,5 @@ node_modules/
 tramp
 /projectile-bookmarks.eld
 eww-bookmarks
+/.org-id-locations
+/bookmarks
