@@ -22,7 +22,8 @@ If NOSORT is non-nil, the list is not sorted--its order is unpredictable.
         (current-dir-list (directory-files-and-attributes directory t))
         (match (if match match ".*")))
     (while current-dir-list
-      (let ((file-name (car (car current-dir-list))) (is-dir (car (cdr (car current-dir-list)))))
+      (let ((file-name (car (car current-dir-list)))
+            (is-dir (car (cdr (car current-dir-list)))))
         (cond
          ;; if the filename matches the match string
          (is-dir

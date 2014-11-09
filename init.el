@@ -53,6 +53,7 @@
                       yasnippet)
   "A list of packages to install.")
 
+
 ;; my cusomized zenburn with darker background
 (add-to-list 'custom-theme-load-path my-custom-themes)
 (load-theme 'zenburn t)
@@ -109,9 +110,8 @@
 ;; whitespace mode
 ;; Only displays tab characters
 (setq whitespace-display-mappings
-       ;; all numbers are Unicode codepoint in decimal. try (insert-char 182 ) to see it
-      '(
-        (tab-mark 9 [8594 9] [92 9])))
+      ;; all numbers are Unicode codepoint in decimal. try (insert-char 182 ) to see it
+      '((tab-mark 9 [8594 9] [92 9])))
 
 (setq whitespace-style '(spaces tabs newline space-mark tab-mark newline-mark))
 
@@ -135,7 +135,7 @@
 
 ;; winner mode
 (when (fboundp 'winner-mode)
-      (winner-mode 1))
+  (winner-mode 1))
 
 ;; unique buffer names
 (require 'uniquify)

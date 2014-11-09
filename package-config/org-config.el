@@ -31,8 +31,8 @@
 (setq org-catch-invisible-edits t)
 
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "IN-PROGRESS(i!)" "WAITING" "|" "WILL-NOT-IMPLEMENT" "DONE(d)")
-        (sequence "BUG(b)" "RESOLVING(r!)" "|" "NON-ISSUE" "PATCHED(p)")))
+      '((sequence "TODO(t)" "IN-PROGRESS(i!)" "WAITING(w@)" "|" "WILL-NOT-IMPLEMENT(k@)" "DONE(d)")
+        (sequence "BUG(b)" "RESOLVING(r!)" "|" "NON-ISSUE(n@)" "PATCHED(p)")))
 
 ;; defaut capture file
 (setq org-default-notes-file (concat org-directory "/todo.org"))

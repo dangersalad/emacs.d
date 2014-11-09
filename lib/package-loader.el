@@ -38,7 +38,7 @@
 
 Loop through packages defined in `my-packages' and either load an
 init file at ~/.emacs.d/package-config/<package-name>-config.el
-or simple require the package."
+or simply require the package."
   (loop for package-name in my-packages
         do (let ((package-file (concat "~/.emacs.d/package-config/" (symbol-name package-name) "-config.el")))
              (if (file-readable-p package-file)
