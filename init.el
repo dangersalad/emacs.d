@@ -61,6 +61,7 @@
 ;; Packages in lib/
 ;; These can all be compiled
 (require 'auto-byte-compile) ; auto compile lisp, only if a .elc file exists
+(require 'custom-functions)
 (require 'set-local-variable) ; allows setting a local variable easily
 (require 'package-loader) ; auto load packages from MELPA
 (require 'indentation) ; indentation rules
@@ -69,7 +70,6 @@
 (require 'major-mode-from-name) ; set major mode from buffer name as well as file name
 (require 'popup-terminal)
 (require 'diminish)
-
 
 (setq newline-and-indent t) ; enable indentation detection for line-opening
 
@@ -82,15 +82,6 @@
 
 ;; tramp settings
 (setq tramp-default-method "ssh")
-
-;; function for fixing format errors in a file
-(defun clean-whitespace-region (start end)
-  "Untabify, remove trailing whitespace, and re-indent a region from START to END."
-  (interactive "r")
-  (save-excursion
-    (untabify start end)
-    (indent-according-to-mode)
-    (delete-trailing-whitespace)))
 
 (add-hook 'before-save-hook (lambda ()
                               (if (equal major-mode 'markdown-mode)
