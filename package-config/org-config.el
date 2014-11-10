@@ -35,6 +35,8 @@
 (setq org-agenda-dim-blocked-tasks t)
 (setq org-catch-invisible-edits t)
 
+(setq org-clock-idle-time 5)
+
 (setq org-todo-keywords
       '((sequence "TODO(t)" "IN-PROGRESS(i!)" "WAITING(w@)" "|" "WILL-NOT-IMPLEMENT(k@)" "DONE(d)")
         (sequence "BUG(b)" "RESOLVING(r!)" "|" "NON-ISSUE(n@)" "PATCHED(p)")))
