@@ -21,7 +21,7 @@
 (defun org-agenda-reload ()
   "Reset org agenda files by rescanning the org directory."
   (interactive)
-  (setq org-agenda-files (directory-files-recursive org-directory))
+  (setq org-agenda-files (directory-files-recursive org-directory "\\.org\\|[0-9]\\{8\\}"))
   (setq org-refile-targets '((org-agenda-files . (:level . 1)))))
 
 (org-agenda-reload)
