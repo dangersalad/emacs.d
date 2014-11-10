@@ -20,7 +20,7 @@ If NOSORT is non-nil, the list is not sorted--its order is unpredictable.
   (interactive)
   (let (file-list
         (current-dir-list (directory-files-and-attributes directory t))
-        (match (if match match ".*")))
+        (match (if match match "^[^.].*"))) ; ignore hidden files by default
     (while current-dir-list
       (let ((file-name (car (car current-dir-list)))
             (is-dir (car (cdr (car current-dir-list)))))
@@ -37,7 +37,7 @@ If NOSORT is non-nil, the list is not sorted--its order is unpredictable.
                   (append
                    (directory-files-recursive file-name match)
                    file-list))))
-         ((string-match match file-name)
+         ((string-match match (file-name-nondirectory file-name))
           (setq file-list (cons file-name file-list)))))
       (setq current-dir-list (cdr current-dir-list)))
     file-list))
