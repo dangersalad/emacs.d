@@ -28,8 +28,10 @@ If NOSORT is non-nil, the list is not sorted--its order is unpredictable.
          ;; if the filename matches the match string
          (is-dir
           ;; make sure it is not a hidden dir
-          (if (equal "." (substring file-name -1))
-              ()
+          (if (or
+               (equal "." (substring file-name -1))
+               (equal "." (substring (file-name-nondirectory file-name) 0 1)))
+              (message "skipping %s" file-name)
             ;; recurse it adding the result to the list
             (setq file-list
                   (append

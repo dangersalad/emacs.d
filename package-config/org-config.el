@@ -5,18 +5,23 @@
 
 ;;; Code:
 
+(defvar org-directory "~/org" "Directory for org files.")
+(defvar org-mobile-directory "~/.org-mobile" "Directory for mobile org files.")
+(setq org-journal-dir (concat org-directory "/journal/"))
 (require 'org)
 (require 'org-agenda)
 
 (condition-case nil
-    (make-directory "~/org/journal" t) ; make the org and journal dirs if they are not there already
+    (make-directory org-journal-dir t) ; make the org and journal dirs if they are not there already
   (error nil))
-(setq org-journal-dir "~/org/journal/")
+(condition-case nil
+    (make-directory org-mobile-directory t) ; make the org and journal dirs if they are not there already
+  (error nil))
 
 (defun org-agenda-reload ()
   "Reset org agenda files by rescanning the org directory."
   (interactive)
-  (setq org-agenda-files (directory-files-recursive "~/org"))
+  (setq org-agenda-files (directory-files-recursive org-directory))
   (setq org-refile-targets '((org-agenda-files . (:level . 1)))))
 
 (org-agenda-reload)
