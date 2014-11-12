@@ -54,6 +54,8 @@ Kept here for easier viewing rather than each package's config.")
                       dockerfile-mode
                       go-mode
                       less-css-mode
+                      highlight-symbol
+                      helm
                       markdown-mode
                       yaml-mode
                       org
@@ -62,17 +64,17 @@ Kept here for easier viewing rather than each package's config.")
                       idomenu
                       imenu-anywhere
                       web-mode
-;;                      stripe-buffer
+                      ibuffer-vc
                       evil
                       evil-surround
                       evil-leader
                       evil-nerd-commenter
                       key-chord
                       visual-regexp
+                      volatile-highlights
                       projectile
                       yasnippet)
   "A list of packages to install.")
-
 
 ;; my cusomized zenburn with darker background
 (add-to-list 'custom-theme-load-path my-custom-themes)
@@ -109,6 +111,9 @@ Kept here for easier viewing rather than each package's config.")
                                   (message "Retaining whitespace")
                                 (delete-trailing-whitespace))))
 
+(add-hook 'prog-mode (lambda () (interactive) (setq show-trailing-whitespace 1)))
+(global-set-key (kbd "C-c w") 'whitespace-mode)
+
 ;; backup settings
 ;; setup directories
 (make-directory my-backups t)
@@ -126,16 +131,6 @@ Kept here for easier viewing rather than each package's config.")
 ;; move windows with Shift + <arrow>
 (windmove-default-keybindings)
 (setq windmove-wrap-around t)
-
-;; whitespace mode
-;; Only displays tab characters
-(setq whitespace-display-mappings
-      ;; all numbers are Unicode codepoint in decimal. try (insert-char 182 ) to see it
-      '((tab-mark 9 [8594 9] [92 9])))
-
-(setq whitespace-style '(spaces tabs newline space-mark tab-mark newline-mark))
-
-(global-whitespace-mode 1)
 
 (show-paren-mode 1)
 
@@ -161,6 +156,13 @@ Kept here for easier viewing rather than each package's config.")
 (require 'uniquify)
 (customize-set-variable 'uniquify-buffer-name-style 'post-forward)
 
+;; ibuffer
+(defalias 'list-buffers 'ibuffer)
+(setq ibuffer-use-other-window t)
+
+(global-auto-revert-mode)
+
+;; custom custom fils
 (setq custom-file my-customs-file)
 (if (file-readable-p my-customs-file)
     (progn
@@ -190,9 +192,12 @@ Kept here for easier viewing rather than each package's config.")
 
 ;; diminished mode line
 (diminish 'js2-minor-mode)
+(diminish 'volatile-highlights-mode)
 (diminish 'undo-tree-mode (string 32 #x236b))
 (diminish 'magit-auto-revert-mode)
 
+;; dired
+(setq dired-listing-switches "-lha --group-directories-first")
 
 ;; load local init if available
 (if (file-readable-p my-local-init)

@@ -7,6 +7,7 @@
 
 (defvar my-snippets (concat my-local-dir "/snippets") "Local, non git controlled snippets.")
 (make-directory my-snippets t)
+(require 'yasnippet)
 (setq yas-snippet-dirs
       (append yas-snippet-dirs
               `(,my-snippets))) ;add local snippets

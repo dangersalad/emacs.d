@@ -41,9 +41,14 @@ init file at ~/.emacs.d/package-config/<package-name>-config.el
 or simply require the package."
   (loop for package-name in my-packages
         do (let ((package-file (concat "~/.emacs.d/package-config/" (symbol-name package-name) "-config.el")))
+             (message "Looking for %s" package-file)
              (if (file-readable-p package-file)
-                 (progn (message "Loading config for %s" (symbol-name package-name)) (load package-file))
-               (progn (message "Requiring package %s" (symbol-name package-name)) (require package-name))))))
+                 (progn
+                   (message "Loading config for %s" (symbol-name package-name))
+                   (load package-file))
+               (progn
+                 (message "Requiring package %s" (symbol-name package-name))
+                 (require package-name))))))
 
 (provide 'package-loader)
 
