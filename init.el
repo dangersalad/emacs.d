@@ -7,14 +7,34 @@
 (setq inhibit-startup-message t)
 
 ;; file paths vairables
-(defvar my-custom-lib "~/.emacs.d/lib" "Custom elisp library.")
-(defvar my-custom-themes "~/.emacs.d/themes" "Customized Emacs themes.")
-(defvar my-customs-file "~/.emacs.d/custom.el" "File for customizations via \\[customize].")
-(defvar my-backups "~/.emacs.d/tmp/backups" "Where backups go.")
-(defvar my-autosave "~/.emacs.d/tmp/autosave" "Where autosaves go.")
-(defvar my-package-configs "~/.emacs.d/package-config" "Configuration for MELPA packages.")
-(defvar my-keybindings "~/.emacs.d/keybindings" "Custom keybindings, kept here for easier viewing rather than each package's config.")
-(defvar my-local-dir "~/.emacs.d/local" "Directory for local, non git controlled files.")
+(defvar my-custom-lib
+  "~/.emacs.d/lib"
+  "Custom elisp library.")
+(defvar my-custom-themes
+  "~/.emacs.d/themes"
+  "Customized Emacs themes.")
+(defvar my-customs-file
+  "~/.emacs.d/custom.el"
+  "File for customizations via \\[customize].")
+(defvar my-backups
+  "~/.emacs.d/tmp/backups"
+  "Where backups go.")
+(defvar my-autosave
+  "~/.emacs.d/tmp/autosave"
+  "Where autosaves go.")
+(defvar my-package-configs
+  "~/.emacs.d/package-config"
+  "Configuration for MELPA packages.")
+(defvar my-keybindings
+  "~/.emacs.d/keybindings"
+  "Custom keybindings.
+Kept here for easier viewing rather than each package's config.")
+(defvar my-local-dir
+  "~/.emacs.d/local"
+  "Directory for local, non git controlled files.")
+(defvar my-local-init
+  (concat my-local-dir "/init.el")
+  "Local init file to be loaded at the end, ignored by version control.")
 
 ;; my load path
 (add-to-list 'load-path my-custom-lib)
@@ -42,7 +62,7 @@
                       idomenu
                       imenu-anywhere
                       web-mode
-                      stripe-buffer
+;;                      stripe-buffer
                       evil
                       evil-surround
                       evil-leader
@@ -68,7 +88,7 @@
 (require 'indentation) ; indentation rules
 (require 'line-opening) ; vim like line opening C-o and M-o
 (require 'marks)        ; mark tweaks
-(require 'major-mode-from-name) ; set major mode from buffer name as well as file name
+;;(require 'major-mode-from-name) ; set major mode from buffer name as well as file name
 (require 'popup-terminal)
 (require 'diminish)
 
@@ -174,6 +194,9 @@
 (diminish 'magit-auto-revert-mode)
 
 
+;; load local init if available
+(if (file-readable-p my-local-init)
+    (load (concat my-local-init)))
 
 (provide 'init)
 ;;; init.el ends here

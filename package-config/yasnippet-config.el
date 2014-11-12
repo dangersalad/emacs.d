@@ -9,7 +9,7 @@
 (make-directory my-snippets t)
 (setq yas-snippet-dirs
       (append yas-snippet-dirs
-              '("~/.emacs.d/local/snippets"))) ;add local snippets
+              `(,my-snippets))) ;add local snippets
 (add-hook 'git-commit-mode-hook
           '(lambda ()
              (yas-minor-mode)))

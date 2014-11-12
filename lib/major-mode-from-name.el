@@ -12,6 +12,7 @@
   (if (not (string-match "^\*.*\*$" (buffer-name)))
       (let ((buffer-file-name (or buffer-file-name (buffer-name))))
         (set-auto-mode))))
+
 (setq-default major-mode 'major-mode-from-name)
 
 (provide 'major-mode-from-name)
