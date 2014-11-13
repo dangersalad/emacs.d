@@ -9,4 +9,6 @@
 (projectile-global-mode)
 (setq projectile-remember-window-configs t)
 
+(define-key projectile-command-map (kbd "s s") 'helm-projectile-ag)
+
 ;;; projectile-config.el ends here
