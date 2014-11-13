@@ -56,6 +56,7 @@ Kept here for easier viewing rather than each package's config.")
                       less-css-mode
                       highlight-symbol
                       helm
+                      helm-projectile
                       markdown-mode
                       yaml-mode
                       org
