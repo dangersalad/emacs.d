@@ -45,7 +45,7 @@
 (setq org-default-notes-file (concat org-directory "/todo.org"))
 
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline (concat org-directory "/todo.org") "Todo") "* TODO %? %^{Schedule}t\n  %A")
+      '(("t" "Todo" entry (file+headline (concat org-directory "/todo.org") "Todo") "* TODO %?\n  SCHEDULED: %^{Schedule}t\n  %A")
         ("n" "Note" entry (file+headline (concat org-directory "/notes.org") "Notes") "* %? %U\n  %i")))
 
 
