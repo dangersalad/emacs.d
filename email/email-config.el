@@ -15,9 +15,12 @@
         (require 'smtpmail)
 
         (add-to-list 'mu4e-bookmarks
-                     '("flag:flagged" "Flagged" ?f)
+                     '("flag:flagged" "Flagged" ?f))
+        (add-to-list 'mu4e-bookmarks
                      '("date:2d..now" "Past 2 days" ?2))
-        
+        (add-to-list 'mu4e-bookmarks
+                     '("date:7d..now AND NOT flag:trashed" "Recent Inbox" ?r))
+
         (defun my-mu4e-set-account ()
           "Set the account for composing a message."
           (let* ((account
@@ -59,7 +62,7 @@
                            (null message-sent-message-via))
                   (push (buffer-name buffer) buffers))))
             (nreverse buffers)))
-        
+
         (setq gnus-dired-mail-mode 'mu4e-user-agent)
         (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)))
     (message "No file at %s, skipping email configuration" user-email-settings))
