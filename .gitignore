@@ -18,3 +18,4 @@ eww-bookmarks
 /.org-id-locations
 /bookmarks
 /recentf
+.mc-lists.el

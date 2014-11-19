@@ -54,7 +54,6 @@ Kept here for easier viewing rather than each package's config.")
                       dockerfile-mode
                       go-mode
                       less-css-mode
-                      highlight-symbol
                       helm
                       helm-projectile
                       helm-ag
