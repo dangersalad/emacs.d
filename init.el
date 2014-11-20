@@ -72,8 +72,9 @@ Kept here for easier viewing rather than each package's config.")
                       evil-nerd-commenter
                       key-chord
                       visual-regexp
-                      volatile-highlights
                       projectile
+                      aggressive-indent
+                      smartparens
                       yasnippet)
   "A list of packages to install.")
 
@@ -87,13 +88,13 @@ Kept here for easier viewing rather than each package's config.")
 (require 'auto-byte-compile) ; auto compile lisp, only if a .elc file exists
 (require 'custom-functions)
 (require 'set-local-variable) ; allows setting a local variable easily
-(require 'package-loader) ; auto load packages from MELPA
 (require 'indentation) ; indentation rules
 (require 'line-opening) ; vim like line opening C-o and M-o
 (require 'marks)        ; mark tweaks
 ;;(require 'major-mode-from-name) ; set major mode from buffer name as well as file name
 (require 'popup-terminal)
 (require 'diminish)
+(require 'package-loader) ; auto load packages from MELPA
 
 (setq newline-and-indent t) ; enable indentation detection for line-opening
 
@@ -112,7 +113,7 @@ Kept here for easier viewing rather than each package's config.")
                                   (message "Retaining whitespace")
                                 (delete-trailing-whitespace))))
 
-(add-hook 'prog-mode (lambda () (interactive) (setq show-trailing-whitespace 1)))
+(add-hook 'prog-mode-hook (lambda () (interactive) (setq show-trailing-whitespace 1)))
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 
 ;; backup settings
@@ -132,8 +133,6 @@ Kept here for easier viewing rather than each package's config.")
 ;; move windows with Shift + <arrow>
 (windmove-default-keybindings)
 (setq windmove-wrap-around t)
-
-(show-paren-mode 1)
 
 ;; no menu bar please
 (menu-bar-mode -1)
@@ -191,18 +190,13 @@ Kept here for easier viewing rather than each package's config.")
 ;; load email configuration
 (load "~/.emacs.d/email/email-config")
 
-;; diminished mode line
-(diminish 'js2-minor-mode)
-(diminish 'volatile-highlights-mode)
-(diminish 'undo-tree-mode (string 32 #x236b))
-(diminish 'magit-auto-revert-mode)
-
 ;; dired
 (setq dired-listing-switches "-lha --group-directories-first")
 
 ;; load local init if available
 (if (file-readable-p my-local-init)
     (load (concat my-local-init)))
+
 
 (provide 'init)
 ;;; init.el ends here

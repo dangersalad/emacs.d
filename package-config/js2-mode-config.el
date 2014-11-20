@@ -12,5 +12,6 @@
 (add-hook 'js-mode-hook 'js2-minor-mode)
 (setq-default js2-show-parse-errors nil)
 (setq-default js2-strict-missing-semi-warning nil)
+(diminish 'js2-minor-mode)
 
 ;;; js2-mode-config.el ends here
