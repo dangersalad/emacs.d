@@ -56,7 +56,10 @@ Kept here for easier viewing rather than each package's config.")
                       less-css-mode
                       helm
                       helm-projectile
+                      helm-git-files
                       helm-ag
+                      helm-flycheck
+                      helm-descbinds
                       markdown-mode
                       yaml-mode
                       org
