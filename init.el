@@ -62,9 +62,6 @@ Kept here for easier viewing rather than each package's config.")
                       org
                       org-journal
                       web-mode
-                      idomenu
-                      imenu-anywhere
-                      web-mode
                       ibuffer-vc
                       evil
                       evil-surround
@@ -85,18 +82,17 @@ Kept here for easier viewing rather than each package's config.")
 
 ;; Packages in lib/
 ;; These can all be compiled
-(require 'auto-byte-compile) ; auto compile lisp, only if a .elc file exists
-(require 'custom-functions)
+(require 'auto-byte-compile)  ; auto compile lisp, only if a .elc file exists
+(require 'custom-functions)   ; misc custom functions
 (require 'set-local-variable) ; allows setting a local variable easily
-(require 'indentation) ; indentation rules
-(require 'line-opening) ; vim like line opening C-o and M-o
-(require 'marks)        ; mark tweaks
-;;(require 'major-mode-from-name) ; set major mode from buffer name as well as file name
-(require 'popup-terminal)
-(require 'diminish)
-(require 'package-loader) ; auto load packages from MELPA
+(require 'indentation)        ; indentation rules
+(require 'line-opening)       ; vim like line opening C-o and M-o
+(require 'marks)              ; mark tweaks
+(require 'popup-terminal)     ; terminal set to <F11>
+(require 'diminish)           ; hide minor modes in modeline
+(require 'package-loader)     ; auto load packages from MELPA
 
-(setq newline-and-indent t) ; enable indentation detection for line-opening
+(setq newline-and-indent t)   ; enable indentation detection for line-opening
 
 ;; scroll less aggressivly
 (setq scroll-step 1)
@@ -145,8 +141,6 @@ Kept here for easier viewing rather than each package's config.")
 ;; font for gui
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-8"))
 
-;; ido mode
-(ido-mode)
 
 ;; winner mode
 (when (fboundp 'winner-mode)
@@ -160,9 +154,10 @@ Kept here for easier viewing rather than each package's config.")
 (defalias 'list-buffers 'ibuffer)
 (setq ibuffer-use-other-window t)
 
+;; detect changes on disk and update buffers
 (global-auto-revert-mode)
 
-;; custom custom fils
+;; custom customs file
 (setq custom-file my-customs-file)
 (if (file-readable-p my-customs-file)
     (progn
@@ -196,7 +191,6 @@ Kept here for easier viewing rather than each package's config.")
 ;; load local init if available
 (if (file-readable-p my-local-init)
     (load (concat my-local-init)))
-
 
 (provide 'init)
 ;;; init.el ends here
