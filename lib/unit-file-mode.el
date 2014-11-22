@@ -7,9 +7,8 @@
 
 (define-generic-mode 'unit-file-mode
   '("#")
-  '()
+  '("Unit" "Service" "Install" "Timer")
   '(("=" . 'font-lock-operator)
-    ("\\[[A-Za-z-]+\\]" . 'font-lock-function-name-face)
     ("^[A-Z][a-zA-Z]+" . 'font-lock-variable-name-face))
   '("\\.service"
     "\\.timer"
