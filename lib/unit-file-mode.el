@@ -16,4 +16,6 @@
   nil
   "A mode for systemd unit files")
 
+(provide 'unit-file-mode)
+
 ;;; unit-file-mode.el ends here
