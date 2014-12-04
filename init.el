@@ -115,6 +115,8 @@ Kept here for easier viewing rather than each package's config.")
                                 (delete-trailing-whitespace))))
 
 (add-hook 'prog-mode-hook (lambda () (interactive) (setq show-trailing-whitespace 1)))
+(add-hook 'prog-mode-hook (lambda() (unless (equal major-mode 'web-mode) (hs-minor-mode))))
+
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 
 ;; backup settings

@@ -46,7 +46,7 @@
         (when (fboundp 'imagemagick-register-types)
           (imagemagick-register-types))
         (setq mu4e-view-prefer-html nil)
-        (setq mu4e-html2text-command "html2text -nobs -ascii -width 72")
+        (setq mu4e-html2text-command "html2text_py -b 72")
         (setq mail-user-agent 'mu4e-user-agent)
 
         (require 'gnus-dired)
@@ -65,7 +65,7 @@
 
         (setq gnus-dired-mail-mode 'mu4e-user-agent)
         (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)))
-    (message "No file at %s, skipping email configuration" user-email-settings))
+  (message "No file at %s, skipping email configuration" user-email-settings))
 
 
 ;;; email-config.el ends here
