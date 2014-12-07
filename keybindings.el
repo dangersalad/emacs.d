@@ -45,7 +45,10 @@
     (evil-leader/set-key "cc" 'evilnc-copy-and-comment-lines)
     (evil-leader/set-key "cp" 'evilnc-comment-or-uncomment-paragraphs)))
 
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x C-b") 'helm-mini)
 
+(global-set-key [remap kill-line] (bol-with-prefix kill-line))
+(global-set-key [remap paredit-kill] (bol-with-prefix paredit-kill))
+(global-set-key [remap org-kill-line] (bol-with-prefix org-kill-line))
 
 ;;; keybindings.el ends here
