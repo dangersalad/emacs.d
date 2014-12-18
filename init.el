@@ -176,10 +176,6 @@ Kept here for easier viewing rather than each package's config.")
 ;; jump tp config
 (set-register ?z '(file  . "~/.emacs.d"))
 
-;; erc settings
-(defvar erc-hide-list '("JOIN" "PART" "QUIT"))
-(require 'erc)
-
 ;; init packages
 (message "Looking for missing packages")
 (install-missing-packages)

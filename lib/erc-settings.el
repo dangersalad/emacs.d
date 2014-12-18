@@ -6,6 +6,7 @@
 ;;;
 ;;; Code:
 
+(defvar erc-hide-list '("JOIN" "PART" "QUIT"))
 (require 'erc)
 (setq erc-modules '(autoaway
                     pcomplete
