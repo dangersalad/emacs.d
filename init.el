@@ -29,6 +29,9 @@
   "~/.emacs.d/keybindings"
   "Custom keybindings.
 Kept here for easier viewing rather than each package's config.")
+(defvar my-macros
+  "~/.emacs.d/macros"
+  "Custom keyboard macros.")
 (defvar my-local-dir
   "~/.emacs.d/local"
   "Directory for local, non git controlled files.")
@@ -183,7 +186,10 @@ Kept here for easier viewing rather than each package's config.")
 (my-package-init)
 
 ;; load keybindings
-(load "~/.emacs.d/keybindings")
+(load my-keybindings)
+
+;; load macros
+(load my-macros)
 
 ;; load email configuration
 (load "~/.emacs.d/email/email-config")

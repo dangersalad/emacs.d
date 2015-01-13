@@ -13,6 +13,7 @@
   (if (or
        (equal major-mode 'python-mode)
        (equal major-mode 'markdown-mode)
+       (equal major-mode 'makefile-gmake-mode)
        (equal major-mode 'org-mode)
        (equal major-mode 'org-journal-mode))
       `no-indent'
