@@ -77,6 +77,7 @@ Kept here for easier viewing rather than each package's config.")
                       visual-regexp
                       projectile
                       aggressive-indent
+                      sunrise-commander
                       smartparens
                       yasnippet)
   "A list of packages to install.")
