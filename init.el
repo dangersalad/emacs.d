@@ -78,6 +78,8 @@ Kept here for easier viewing rather than each package's config.")
                       projectile
                       aggressive-indent
                       sunrise-commander
+                      sunrise-x-popviewer
+                      sunrise-x-tree
                       smartparens
                       yasnippet)
   "A list of packages to install.")
