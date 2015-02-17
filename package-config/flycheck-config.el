@@ -10,15 +10,17 @@
 ;; enable flycheck everywhere
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-(add-to-list 'load-path
-             (concat
-              (getenv "GOPATH")
-              "/src/github.com/dougm/goflymake"))
-(require 'go-flycheck)
+(defvar goflymake-dir (concat
+                       (getenv "GOPATH")
+                       "/src/github.com/dougm/goflymake"))
 
-(define-key flycheck-mode-map flycheck-keymap-prefix nil)
-(setq flycheck-keymap-prefix (kbd "C-c e"))
-(define-key flycheck-mode-map flycheck-keymap-prefix
-  flycheck-command-map)
+(when (file-readable-p goflymake-dir)
+  (add-to-list 'load-path goflymake-dir)
+  (require 'go-flycheck)
+
+  (define-key flycheck-mode-map flycheck-keymap-prefix nil)
+  (setq flycheck-keymap-prefix (kbd "C-c e"))
+  (define-key flycheck-mode-map flycheck-keymap-prefix
+    flycheck-command-map))
 
 ;;; flycheck-config.el ends here
