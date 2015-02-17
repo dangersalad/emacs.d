@@ -7,7 +7,6 @@
 
 (require 'smartparens-config)
 (show-smartparens-global-mode t)
-(add-hook 'prog-mode-hook #'smartparens-mode)
-
+(add-hook 'emacs-lisp-mode #'smartparens-mode)
 
 ;;; smartparens-config.el ends here
