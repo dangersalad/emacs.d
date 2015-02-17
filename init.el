@@ -124,7 +124,17 @@ Kept here for easier viewing rather than each package's config.")
 (add-hook 'prog-mode-hook (lambda () (interactive) (setq show-trailing-whitespace 1)))
 (add-hook 'prog-mode-hook (lambda() (unless (equal major-mode 'web-mode) (hs-minor-mode))))
 
-(global-set-key (kbd "C-c w") 'whitespace-mode)
+;; make whitespace-mode use just basic coloring
+(setq whitespace-style
+      '(face trailing tab-mark lines-tail))
+
+(setq whitespace-display-mappings
+      ;; all numbers are Unicode codepoint in decimal. try (insert-char 182 ) to see it
+      '((space-mark 32 [183] [46]) ; 32 SPACE, 183 MIDDLE DOT 「·」, 46 FULL STOP 「.」
+        (newline-mark 10 [182 10]) ; 10 LINE FEED
+        (tab-mark 9 [8614 9] [92 9]))) ; 9 TAB, 9655 WHITE RIGHT-POINTING TRIANGLE 「▷」
+
+(global-whitespace-mode)
 
 ;; backup settings
 ;; setup directories
