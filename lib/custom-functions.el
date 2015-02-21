@@ -69,6 +69,12 @@ argument."
          (call-interactively ',function))
        ',name)))
 
+(defun my-dired-exec-last-macro ()
+  "Execute the last macro across all marked files in dired."
+  (interactive)
+  (dolist (file (dired-get-marked-files nil nil 'dired-nondirectory-p))
+    (let ((buffer (find-file file)))
+      (kmacro-end-and-call-macro 1))))
 
 (provide 'custom-functions)
 
