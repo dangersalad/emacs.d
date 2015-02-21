@@ -7,6 +7,8 @@
 
 (defvar org-directory "~/org" "Directory for org files.")
 (defvar org-mobile-directory "~/.org-mobile" "Directory for mobile org files.")
+(defvar org-time-clocksum-format "%d:%.02d")
+
 (setq org-journal-dir (concat org-directory "/journal/"))
 (require 'org)
 (require 'org-agenda)
