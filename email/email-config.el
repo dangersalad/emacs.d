@@ -11,6 +11,8 @@
       (message "Found email settings")
       (load user-email-settings)
 
+      (setq mail-user-agent 'mu4e-user-agent)
+
       (when (require 'mu4e nil 'noerror)
         (require 'smtpmail)
 
