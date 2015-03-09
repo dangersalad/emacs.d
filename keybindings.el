@@ -45,6 +45,7 @@
     (evil-leader/set-key "cc" 'evilnc-copy-and-comment-lines)
     (evil-leader/set-key "cp" 'evilnc-comment-or-uncomment-paragraphs)))
 
+(global-set-key (kbd "C-x C-w") 'whitespace-mode)
 (global-set-key (kbd "C-x C-b") 'helm-mini)
 
 (global-set-key [remap kill-line] (bol-with-prefix kill-line))
