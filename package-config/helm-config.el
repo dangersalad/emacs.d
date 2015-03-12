@@ -34,6 +34,10 @@
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 
+(setq helm-split-window-in-side-p t)
+(setq helm-autoresize-max-height 25)
+(setq helm-autoresize-min-height 25)
+
 (helm-mode 1)
 
 ;;; helm-config.el ends here
