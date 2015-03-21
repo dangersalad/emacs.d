@@ -77,6 +77,7 @@ Kept here for easier viewing rather than each package's config.")
                       key-chord
                       visual-regexp
                       projectile
+                      purpose
                       aggressive-indent
                       sunrise-commander
                       sunrise-x-popviewer
