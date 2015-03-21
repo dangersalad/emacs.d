@@ -33,6 +33,9 @@
 ;; toggle vim bindings with C-f1
 (global-set-key (kbd "<f12>") 'evil-local-mode)
 
+;; custom indent function
+(global-set-key (kbd "C-c \\") 'indent-buffer)
+
 (global-set-key (kbd "C-c C-/ C-/") 'evilnc-comment-or-uncomment-lines)
 (global-set-key (kbd "C-c C-/ C-l") 'evilnc-comment-or-uncomment-to-the-line)
 (global-set-key (kbd "C-c C-/ C-c") 'evilnc-copy-and-comment-lines)

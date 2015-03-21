@@ -76,6 +76,14 @@ argument."
     (let ((buffer (find-file file)))
       (kmacro-end-and-call-macro 1))))
 
+
+(defun indent-buffer ()
+  "Indent entire buffer using `indent-according-to-mode'."
+  (interactive)
+  (save-excursion
+    (mark-whole-buffer)
+    (indent-region (region-beginning) (region-end))))
+
 (provide 'custom-functions)
 
 ;;; custom-functions.el ends here
