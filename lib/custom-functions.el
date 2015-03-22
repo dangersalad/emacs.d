@@ -84,6 +84,38 @@ argument."
     (mark-whole-buffer)
     (indent-region (region-beginning) (region-end))))
 
+(defvar enlarge-window-char ?+)
+(defvar enlarge-window-char-alt ?=)
+(defvar shrink-window-char ?-)
+(defvar shrink-window-char-alt ?-)
+(defvar enlarge-window-horizontally-char ?\])
+(defvar shrink-window-horizontally-char ?\[)
+
+(defun resize-window (&optional arg)
+  "Interactively resize the selected window.
+Repeatedly prompt whether to enlarge or shrink the window until
+the response is neither `enlarge-window-char' or
+`shrink-window-char'.  When called with a prefix arg, resize the
+window by ARG lines."
+  (interactive "p")
+  (let ((prompt (format "Enlarge/Shrink window: vertical %c/%c horizontal %c/%c"
+                        enlarge-window-char shrink-window-char
+                        enlarge-window-horizontally-char shrink-window-horizontally-char))
+        response)
+    (while (progn
+             (setq response (read-event prompt))
+             (cond
+              ((or (equal response enlarge-window-char) (equal response enlarge-window-char-alt))
+               (enlarge-window arg) t)
+              ((or (equal response shrink-window-char) (equal response shrink-window-char-alt))
+               (enlarge-window (- arg)) t)
+              ((equal response enlarge-window-horizontally-char)
+               (enlarge-window-horizontally arg) t)
+              ((equal response shrink-window-horizontally-char)
+               (shrink-window-horizontally arg) t)
+              (t nil))))
+    (push response unread-command-events)))
+
 (provide 'custom-functions)
 
 ;;; custom-functions.el ends here
