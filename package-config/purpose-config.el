@@ -9,8 +9,13 @@
 
 (add-to-list 'purpose-user-mode-purposes '(js-mode . code))
 (add-to-list 'purpose-user-mode-purposes '(web-mode . code))
-(add-to-list 'purpose-user-mode-purposes '(term-mode . term))
-(add-to-list 'purpose-user-regexp-purposes '("magit" . git))
+(add-to-list 'purpose-user-mode-purposes '(prog-mode . code))
+(add-to-list 'purpose-user-mode-purposes '(term-mode . aux))
+(add-to-list 'purpose-user-mode-purposes '(dired-mode . aux))
+(add-to-list 'purpose-user-mode-purposes '(git-commit-mode . popup))
+(add-to-list 'purpose-user-regexp-purposes '("magit" . popup))
+(add-to-list 'purpose-user-regexp-purposes '("helm" . popup))
+(add-to-list 'purpose-user-name-purposes '("*Help*" . popup))
 
 (purpose-compile-user-configuration)
 
