@@ -16,6 +16,8 @@
 (add-to-list 'purpose-user-regexp-purposes '("magit" . popup))
 (add-to-list 'purpose-user-regexp-purposes '("helm" . popup))
 (add-to-list 'purpose-user-name-purposes '("*Help*" . popup))
+(add-to-list 'purpose-user-name-purposes '("*scratch*" . aux))
+
 
 (purpose-compile-user-configuration)
 
