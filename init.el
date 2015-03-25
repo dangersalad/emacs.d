@@ -77,6 +77,7 @@ Kept here for easier viewing rather than each package's config.")
                       key-chord
                       visual-regexp
                       projectile
+                      powerline
                       purpose
                       aggressive-indent
                       sunrise-commander
@@ -202,6 +203,10 @@ Kept here for easier viewing rather than each package's config.")
 
 ;; load keybindings
 (load my-keybindings)
+
+;; flat mode line
+(set-face-attribute 'mode-line nil :box nil)
+(set-face-attribute 'mode-line-inactive nil :box nil)
 
 ;; load macros
 (load my-macros)
