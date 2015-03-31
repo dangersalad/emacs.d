@@ -77,7 +77,7 @@ Kept here for easier viewing rather than each package's config.")
                       key-chord
                       visual-regexp
                       projectile
-                      powerline
+                      ;; powerline
                       purpose
                       aggressive-indent
                       sunrise-commander
@@ -102,7 +102,7 @@ Kept here for easier viewing rather than each package's config.")
 (require 'marks)                  ; mark tweaks
 (require 'popup-terminal)         ; terminal set to <F11>
 (require 'diminish)               ; hide minor modes in modeline
-(require 'local-powerline-themes) ; hide minor modes in modeline
+;; (require 'local-powerline-themes) ; hide minor modes in modeline
 (require 'package-loader)         ; auto load packages from MELPA
 (require 'erc-settings)           ; settings for erc
 (require 'unit-file-mode)         ; a major mode for editing systemd unit files
