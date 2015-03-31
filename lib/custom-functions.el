@@ -91,6 +91,9 @@ argument."
 (defvar enlarge-window-horizontally-char ?\])
 (defvar shrink-window-horizontally-char ?\[)
 
+;; window resizing things
+
+
 (defun resize-window (&optional arg)
   "Interactively resize the selected window.
 Repeatedly prompt whether to enlarge or shrink the window until
@@ -115,6 +118,74 @@ window by ARG lines."
                (shrink-window-horizontally arg) t)
               (t nil))))
     (push response unread-command-events)))
+
+
+(defun win-resize-top-or-bot (window)
+  "Figure out if the WINDOW is on top, bottom or in the middle."
+  (let* ((win-edges (window-edges window))
+         (this-window-y-min (nth 1 win-edges))
+         (this-window-y-max (nth 3 win-edges))
+         (fr-height (frame-height)))
+    (cond
+     ((eq 0 this-window-y-min) "top")
+     ((eq (- fr-height 1) this-window-y-max) "bot")
+     (t "mid"))))
+
+(defun win-resize-left-or-right (window)
+  "Figure out if the WINDOW is to the left, right or in the middle."
+  (let* ((win-edges (window-edges window))
+         (this-window-x-min (nth 0 win-edges))
+         (this-window-x-max (nth 2 win-edges))
+         (fr-width (frame-width)))
+    (cond
+     ((eq 0 this-window-x-min) "left")
+     ((eq (+ fr-width 4) this-window-x-max) "right")
+     (t "mid"))))
+
+(defun win-toggle-vert-split ()
+  "Toggle a vertical window split between two windows."
+  (interactive)
+  (let* ((this-window (get-buffer-window))
+         (win-edges (window-edges this-window))
+         (top-or-bot (win-resize-top-or-bot this-window)))
+    (cond ((equal top-or-bot "top")
+           (select-window (window-at (nth 0 win-edges) (+ (nth 3 win-edges) 2)))
+           (message (buffer-name))
+           (enlarge-window 100))
+          ((equal top-or-bot "bot")
+           (message (buffer-name))
+           (select-window (window-at (nth 0 win-edges) (- (nth 1 win-edges) 2)))
+           (enlarge-window 100))
+          (t (message "passthrough")))))
+
+(defun win-equalize-vert ()
+  "Equalize two windows vertically."
+  (interactive)
+  (let* ((this-window (get-buffer-window))
+         (win-edges (window-edges this-window))
+         (top-or-bot (win-resize-top-or-bot this-window))
+         (other-win)
+         (other-win-edges)
+         (max-y)
+         (current-y)
+         (win-to-resize))
+    (cond ((equal top-or-bot "top")
+           (setq other-win (window-at (nth 0 win-edges) (+ (nth 3 win-edges) 2)))
+           (setq win-to-resize this-window)
+           (setq other-win-edges (window-edges other-win))
+           (setq max-y (nth 3 other-win-edges))
+           (setq current-y (nth 3 win-edges)))
+          ((equal top-or-bot "bot")
+           (setq other-win (window-at (nth 0 win-edges) (- (nth 1 win-edges) 2)))
+           (setq win-to-resize other-win)
+           (setq other-win-edges (window-edges other-win))
+           (setq max-y (nth 3 win-edges))
+           (setq current-y (nth 3 other-win-edges)))
+          (t (message "passthrough")))
+    (adjust-window-trailing-edge win-to-resize (- (/ max-y 2) current-y))))
+
+
+
 
 (provide 'custom-functions)
 

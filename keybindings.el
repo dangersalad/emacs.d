@@ -51,6 +51,9 @@
 (global-set-key (kbd "C-x C-w") 'whitespace-mode)
 (global-set-key (kbd "C-x C-b") 'helm-mini)
 
+(global-set-key (kbd "C-x t") 'win-toggle-vert-split)
+(global-set-key (kbd "C-x T") 'win-equalize-vert)
+
 (global-set-key [remap kill-line] (bol-with-prefix kill-line))
 (global-set-key [remap paredit-kill] (bol-with-prefix paredit-kill))
 (global-set-key [remap org-kill-line] (bol-with-prefix org-kill-line))

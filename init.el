@@ -94,17 +94,18 @@ Kept here for easier viewing rather than each package's config.")
 
 ;; Packages in lib/
 ;; These can all be compiled
-(require 'auto-byte-compile)  ; auto compile lisp, only if a .elc file exists
-(require 'custom-functions)   ; misc custom functions
-(require 'set-local-variable) ; allows setting a local variable easily
-(require 'indentation)        ; indentation rules
-(require 'line-opening)       ; vim like line opening C-o and M-o
-(require 'marks)              ; mark tweaks
-(require 'popup-terminal)     ; terminal set to <F11>
-(require 'diminish)           ; hide minor modes in modeline
-(require 'package-loader)     ; auto load packages from MELPA
-(require 'erc-settings)       ; settings for erc
-(require 'unit-file-mode)     ; a major mode for editing systemd unit files
+(require 'auto-byte-compile)      ; auto compile lisp, only if a .elc file exists
+(require 'custom-functions)       ; misc custom functions
+(require 'set-local-variable)     ; allows setting a local variable easily
+(require 'indentation)            ; indentation rules
+(require 'line-opening)           ; vim like line opening C-o and M-o
+(require 'marks)                  ; mark tweaks
+(require 'popup-terminal)         ; terminal set to <F11>
+(require 'diminish)               ; hide minor modes in modeline
+(require 'local-powerline-themes) ; hide minor modes in modeline
+(require 'package-loader)         ; auto load packages from MELPA
+(require 'erc-settings)           ; settings for erc
+(require 'unit-file-mode)         ; a major mode for editing systemd unit files
 
 (setq newline-and-indent t)   ; enable indentation detection for line-opening
 

@@ -1,0 +1,20 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: ngCtrl
+# key: ngCtrl
+# --
+
+(function(angular) {
+    'use strict';
+
+    var ${1:app} = angular.module('$1');
+
+    var ${2:App}Ctrl = function($scope) {
+        $scope.foo = 'bar';
+    };
+
+    $1.controller('$2Ctrl', [
+        '$scope',
+        $2Ctrl
+    ]);
+
+})(window.angular);
