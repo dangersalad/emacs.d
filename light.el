@@ -10,9 +10,6 @@
 (defvar my-custom-lib
   "~/.emacs.d/lib"
   "Custom elisp library.")
-(defvar my-custom-themes
-  "~/.emacs.d/themes"
-  "Customized Emacs themes.")
 (defvar my-customs-file
   "~/.emacs.d/custom.el"
   "File for customizations via \\[customize].")
@@ -48,9 +45,7 @@ Kept here for easier viewing rather than each package's config.")
                       org)
   "A list of packages to install.")
 
-;; my cusomized zenburn with darker background
-(add-to-list 'custom-theme-load-path my-custom-themes)
-(load-theme 'zenburn t)
+(load-theme 'wombat t)
 
 
 ;; Packages in lib/
