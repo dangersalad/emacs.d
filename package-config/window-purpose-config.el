@@ -1,11 +1,11 @@
-;;; purpose-config --- Config for ELPA installed packaged
+;;; window-purpose-config --- Config for ELPA installed packaged
 ;;; Commentary:
 ;;;
 ;;; Config for purpose package
 
 ;;; Code:
 
-(require 'purpose)
+(require 'window-purpose)
 
 (add-to-list 'purpose-user-mode-purposes '(js-mode . code))
 (add-to-list 'purpose-user-mode-purposes '(web-mode . code))
@@ -21,4 +21,4 @@
 
 (purpose-compile-user-configuration)
 
-;;; purpose-config.el ends here
+;;; window-purpose-config.el ends here

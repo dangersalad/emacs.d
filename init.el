@@ -79,7 +79,7 @@ Kept here for easier viewing rather than each package's config.")
                       visual-regexp
                       projectile
                       ;; powerline
-                      purpose
+                      window-purpose
                       aggressive-indent
                       sunrise-commander
                       sunrise-x-popviewer
