@@ -88,6 +88,9 @@ Kept here for easier viewing rather than each package's config.")
                       yasnippet)
   "A list of packages to install.")
 
+;; use tcp for server
+(setq server-use-tcp t)
+
 ;; my cusomized zenburn with darker background
 (add-to-list 'custom-theme-load-path my-custom-themes)
 (load-theme 'zenburn t)

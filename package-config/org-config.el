@@ -38,7 +38,7 @@
 (setq org-catch-invisible-edits t)
 
 (setq org-clock-idle-time 15)
-
+(setq org-clock-mode-line-total 'current)
 (setq org-log-into-drawer "LOGBOOK")
 (setq org-clock-into-drawer "LOGBOOK")
 
