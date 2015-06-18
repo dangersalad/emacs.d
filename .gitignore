@@ -21,3 +21,4 @@ eww-bookmarks
 .mc-lists.el
 /eshell/
 projectile.cache
+/server/
