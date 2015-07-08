@@ -42,6 +42,7 @@
 (setq org-clock-mode-line-total 'current)
 (setq org-log-into-drawer "LOGBOOK")
 (setq org-clock-into-drawer "LOGBOOK")
+(setq org-time-clocksum-use-fractional t)
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "IN-PROGRESS(i!)" "WAITING(w@)" "|" "WILL-NOT-IMPLEMENT(k@)" "DONE(d)")
