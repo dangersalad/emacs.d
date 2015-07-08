@@ -6,6 +6,7 @@
 ;;; Code:
 
 (defvar org-directory "~/org" "Directory for org files.")
+(defvar org-agenda-directory "~/org/agenda" "Directory for org files.")
 (defvar org-mobile-directory "~/.org-mobile" "Directory for mobile org files.")
 (defvar org-time-clocksum-format "%d:%.02d")
 
@@ -23,7 +24,7 @@
 (defun org-agenda-reload ()
   "Reset org agenda files by rescanning the org directory."
   (interactive)
-  (setq org-agenda-files (directory-files-recursive org-directory "\\.org\\|[0-9]\\{8\\}"))
+  (setq org-agenda-files (directory-files-recursive org-agenda-directory "\\.org\\|[0-9]\\{8\\}"))
   (setq org-refile-targets '((org-agenda-files . (:level . 1)))))
 
 (org-agenda-reload)
