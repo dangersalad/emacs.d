@@ -67,6 +67,9 @@ Kept here for easier viewing rather than each package's config.")
                       helm-ag
                       helm-flycheck
                       helm-descbinds
+                      helm-swoop
+                      helm-go-package
+                      ac-helm
                       markdown-mode
                       yaml-mode
                       org
