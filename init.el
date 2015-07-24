@@ -45,6 +45,8 @@ Kept here for easier viewing rather than each package's config.")
 (defvar my-packages '(ag
                       adaptive-wrap
                       flycheck
+                      powerline
+                      flycheck-tip
                       linum-relative
                       auto-complete
                       magit
@@ -78,7 +80,6 @@ Kept here for easier viewing rather than each package's config.")
                       key-chord
                       visual-regexp
                       projectile
-                      ;; powerline
                       window-purpose
                       aggressive-indent
                       sunrise-commander

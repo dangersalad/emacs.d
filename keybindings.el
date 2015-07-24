@@ -58,4 +58,7 @@
 (global-set-key [remap paredit-kill] (bol-with-prefix paredit-kill))
 (global-set-key [remap org-kill-line] (bol-with-prefix org-kill-line))
 
+;; cycle through errors in prog modes
+(define-key prog-mode-map (kbd "C-c C-n") 'flycheck-tip-cycle)
+
 ;;; keybindings.el ends here
