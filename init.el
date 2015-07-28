@@ -74,6 +74,7 @@ Kept here for easier viewing rather than each package's config.")
                       yaml-mode
                       org
                       org-journal
+                      org-trello
                       web-mode
                       ibuffer-vc
                       evil
