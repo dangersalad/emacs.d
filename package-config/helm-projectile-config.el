@@ -10,4 +10,7 @@
 
 ;; use helm for al possible projectile commangs
 (helm-projectile-toggle 1)
+
+(setq helm-projectile-fuzzy-match t)
+
 ;;; helm-projectile-config.el ends here
