@@ -60,6 +60,7 @@ Kept here for easier viewing rather than each package's config.")
                       dockerfile-mode
                       go-mode
                       go-autocomplete
+                      go-eldoc
                       less-css-mode
                       helm
                       helm-projectile
