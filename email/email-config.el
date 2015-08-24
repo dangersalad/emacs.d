@@ -48,7 +48,7 @@
         (when (fboundp 'imagemagick-register-types)
           (imagemagick-register-types))
         (setq mu4e-view-prefer-html nil)
-        (setq mu4e-html2text-command "html2text_py -b 72")
+        (setq mu4e-html2text-command "html2text -b 72")
         (setq mail-user-agent 'mu4e-user-agent)
 
         (require 'gnus-dired)
