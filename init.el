@@ -61,6 +61,7 @@ Kept here for easier viewing rather than each package's config.")
                       go-mode
                       go-autocomplete
                       go-eldoc
+                      go-scratch
                       less-css-mode
                       helm
                       helm-projectile
