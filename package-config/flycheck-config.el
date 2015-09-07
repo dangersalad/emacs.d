@@ -14,7 +14,12 @@
                        (getenv "GOPATH")
                        "/src/github.com/dougm/goflymake"))
 
+(message goflymake-dir)
+(if (file-readable-p goflymake-dir)
+    (message "it's there")
+  (message "it's not there"))
 (when (file-readable-p goflymake-dir)
+  (message "Loading golang flycheck stuff")
   (add-to-list 'load-path goflymake-dir)
   (require 'go-flycheck)
 

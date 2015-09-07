@@ -43,6 +43,9 @@ Kept here for easier viewing rather than each package's config.")
 (add-to-list 'load-path my-custom-lib)
 
 (defvar my-packages '(ag
+                      org
+                      org-journal
+                      org-trello
                       adaptive-wrap
                       flycheck
                       powerline
@@ -63,6 +66,8 @@ Kept here for easier viewing rather than each package's config.")
                       go-eldoc
                       go-scratch
                       less-css-mode
+                      ledger-mode
+                      flycheck-ledger
                       helm
                       helm-projectile
                       helm-git-files
@@ -74,9 +79,6 @@ Kept here for easier viewing rather than each package's config.")
                       ac-helm
                       markdown-mode
                       yaml-mode
-                      org
-                      org-journal
-                      org-trello
                       web-mode
                       ibuffer-vc
                       evil
