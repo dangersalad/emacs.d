@@ -179,7 +179,7 @@ Kept here for easier viewing rather than each package's config.")
 (global-set-key (kbd "<f3>") 'calendar)
 
 ;; font for gui
-(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-8"))
+(add-to-list 'default-frame-alist '(font . "Ubuntu Mono-10"))
 
 
 ;; winner mode
