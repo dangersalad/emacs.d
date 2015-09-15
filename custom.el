@@ -10,4 +10,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(flycheck-color-mode-line-error-face ((t (:background "#bc8383" :foreground "#1c1c1c"))))
+ '(flycheck-color-mode-line-info-face ((t (:background "#8cd0d3" :foreground "#1c1c1c"))))
+ '(flycheck-color-mode-line-warning-face ((t (:background "#d0bf8f" :foreground "#1c1c1c")))))

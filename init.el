@@ -48,8 +48,9 @@ Kept here for easier viewing rather than each package's config.")
                       org-trello
                       adaptive-wrap
                       flycheck
-                      powerline
                       flycheck-tip
+                      flycheck-color-mode-line
+                      ;; powerline
                       linum-relative
                       auto-complete
                       magit
