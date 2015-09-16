@@ -55,5 +55,13 @@
       '(("t" "Todo" entry (file+headline (concat org-directory "/todo.org") "Todo") "* TODO %?\n  SCHEDULED: %^{Schedule}t\n  %A")
         ("n" "Note" entry (file+headline (concat org-directory "/notes.org") "Notes") "* %? %U\n  %i")))
 
+(add-hook 'org-mode-hook
+          (lambda ()
+            (add-hook 'after-save-hook 'org-babel-tangle nil 'local-please)))
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((sh . t)))
+
 
 ;;; org-config.el ends here
