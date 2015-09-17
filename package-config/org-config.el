@@ -55,9 +55,20 @@
       '(("t" "Todo" entry (file+headline (concat org-directory "/todo.org") "Todo") "* TODO %?\n  SCHEDULED: %^{Schedule}t\n  %A")
         ("n" "Note" entry (file+headline (concat org-directory "/notes.org") "Notes") "* %? %U\n  %i")))
 
+(defun org-to-tc ()
+  "Convert the current org file into a timeclock file for ledger."
+  (message "Saving timeclock file")
+  (shell-command
+   (concat "~/.emacs.d/bin/org2tc "
+           (buffer-file-name)
+           " > ~/documents/finance/"
+           (replace-regexp-in-string
+            (regexp-quote "\.org") ".timeclock" (buffer-name) nil 'literal))))
+
 (add-hook 'org-mode-hook
           (lambda ()
-            (add-hook 'after-save-hook 'org-babel-tangle nil 'local-please)))
+            (add-hook 'after-save-hook 'org-babel-tangle nil 'local-please)
+            (add-hook 'after-save-hook 'org-to-tc nil 'local-please)))
 
 (org-babel-do-load-languages
  'org-babel-load-languages

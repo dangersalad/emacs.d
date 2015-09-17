@@ -6,6 +6,10 @@
 ;;; Code:
 
 (require 'ledger-mode)
+
+(add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
+(add-to-list 'auto-mode-alist '("\\.ldg$" . ledger-mode))
+
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((ledger . t)))
