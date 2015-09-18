@@ -58,6 +58,10 @@
 (global-set-key [remap paredit-kill] (bol-with-prefix paredit-kill))
 (global-set-key [remap org-kill-line] (bol-with-prefix org-kill-line))
 
+
+(define-key Info-mode-map (kbd "<mouse-8>") 'Info-history-back)
+(define-key Info-mode-map (kbd "<mouse-9>") 'Info-history-forward)
+
 ;; cycle through errors in prog modes
 (define-key prog-mode-map (kbd "C-c C-n") 'flycheck-tip-cycle)
 

@@ -116,7 +116,6 @@ events.sort(event_compare)
 for event in events:
     print("i %s %s" % (time.strftime("%Y/%m/%d %H:%M:%S", event[0]), event[3]))
     if event[1]:
-        print("O"),
-        print("%s" % time.strftime("%Y/%m/%d %H:%M:%S", event[1]))
+        print("O %s" % time.strftime("%Y/%m/%d %H:%M:%S", event[1]))
 
 # org2tc ends here
