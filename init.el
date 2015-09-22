@@ -235,7 +235,7 @@ Kept here for easier viewing rather than each package's config.")
 
 ;; load local init if available
 (if (file-readable-p my-local-init)
-    (load (concat my-local-init)))
+    (load my-local-init))
 
 (provide 'init)
 ;;; init.el ends here
