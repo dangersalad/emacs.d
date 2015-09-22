@@ -100,7 +100,7 @@ Kept here for easier viewing rather than each package's config.")
   "A list of packages to install.")
 
 ;; use tcp for server
-(setq server-use-tcp t)
+(defvar server-use-tcp t)
 
 ;; my cusomized zenburn with darker background
 (add-to-list 'custom-theme-load-path my-custom-themes)
@@ -132,6 +132,7 @@ Kept here for easier viewing rather than each package's config.")
 (setq-default create-lockfiles nil)
 
 ;; tramp settings
+(require 'tramp)
 (setq tramp-default-method "ssh")
 
 (add-hook 'before-save-hook (lambda ()
@@ -143,6 +144,7 @@ Kept here for easier viewing rather than each package's config.")
 (add-hook 'prog-mode-hook (lambda() (unless (equal major-mode 'web-mode) (hs-minor-mode))))
 
 ;; make whitespace-mode use just basic coloring
+(require 'whitespace)
 (setq whitespace-style
       '(face trailing tab-mark lines-tail))
 
@@ -169,6 +171,7 @@ Kept here for easier viewing rather than each package's config.")
  version-control t)
 
 ;; move windows with Shift + <arrow>
+(require 'windmove)
 (windmove-default-keybindings)
 (setq windmove-wrap-around t)
 
@@ -193,6 +196,7 @@ Kept here for easier viewing rather than each package's config.")
 (customize-set-variable 'uniquify-buffer-name-style 'post-forward)
 
 ;; ibuffer
+(require 'ibuffer)
 (defalias 'list-buffers 'ibuffer)
 (setq ibuffer-use-other-window t)
 

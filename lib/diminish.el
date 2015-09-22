@@ -109,12 +109,13 @@
 (eval-when-compile (require 'cl))
 
 (defvar diminish-must-not-copy-minor-mode-alist nil
-  "Non-nil means loading diminish.el won't (copy-alist minor-mode-alist).
-Normally `minor-mode-alist' is setq to that copy on loading diminish because
-at least one of its cons cells, that for abbrev-mode, is read-only (see
-ELisp Info on \"pure storage\").  If you setq this variable to t & then
-try to diminish abbrev-mode under GNU Emacs 19.34, you'll get the error
-message \"Attempt to modify read-only object\".")
+  "Non-nil means loading diminish.el won't (copy-alist `minor-mode-alist').
+Normally `minor-mode-alist' is setq to that copy on loading
+diminish because at least one of its cons cells, that for command
+`abbrev-mode', is read-only (see ELisp Info on \"pure storage\").
+If you setq this variable to t & then try to diminish command `abbrev-mode'
+under GNU Emacs 19.34, you'll get the error message \"Attempt to
+modify read-only object\".")
 
 (or diminish-must-not-copy-minor-mode-alist
     (callf copy-alist minor-mode-alist))
@@ -155,19 +156,22 @@ message \"Attempt to modify read-only object\".")
 (defun diminish (mode &optional to-what)
   "Diminish mode-line display of minor mode MODE to TO-WHAT (default \"\").
 
-Interactively, enter (with completion) the name of any minor mode, followed
-on the next line by what you want it diminished to (default empty string).
-The response to neither prompt should be quoted.  However, in Lisp code,
-both args must be quoted, the first as a symbol, the second as a string,
-as in (diminish 'jiggle-mode \" Jgl\").
+Interactively, enter (with completion) the name of any minor
+mode, followed on the next line by what you want it diminished
+to (default empty string).  The response to neither prompt should
+be quoted.  However, in Lisp code, both args must be quoted, the
+first as a symbol, the second as a string, as in (diminish
+'jiggle-mode \" Jgl\").
 
-The mode-line displays of minor modes usually begin with a space, so
-the modes' names appear as separate words on the mode line.  However, if
-you're having problems with a cramped mode line, you may choose to use single
-letters for some modes, without leading spaces.  Capitalizing them works
-best; if you then diminish some mode to \"X\" but have abbrev-mode enabled as
-well, you'll get a display like \"AbbrevX\".  This function prepends a space
-to TO-WHAT if it's > 1 char long & doesn't already begin with a space."
+The mode-line displays of minor modes usually begin with a space,
+so the modes' names appear as separate words on the mode line.
+However, if you're having problems with a cramped mode line, you
+may choose to use single letters for some modes, without leading
+spaces.  Capitalizing them works best; if you then diminish some
+mode to \"X\" but have command `abbrev-mode' enabled as well,
+you'll get a display like \"AbbrevX\".  This function prepends a
+space to TO-WHAT if it's > 1 char long & doesn't already begin
+with a space."
   (interactive (list (read (completing-read
                             "Diminish what minor mode: "
                             (mapcar (lambda (x) (list (symbol-name (car x))))
@@ -208,7 +212,7 @@ to TO-WHAT if it's > 1 char long & doesn't already begin with a space."
 Do nothing if the arg is a minor mode that hasn't been diminished.
 
 Interactively, enter (with completion) the name of any diminished mode (a
-mode that was formerly a minor mode on which you invoked M-x diminish).
+mode that was formerly a minor mode on which you invoked \\[diminish]).
 To restore all diminished modes to minor status, answer `diminished-modes'.
 The response to the prompt shouldn't be quoted.  However, in Lisp code,
 the arg must be quoted as a symbol, as in (diminish-undo 'diminished-modes)."

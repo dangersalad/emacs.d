@@ -8,6 +8,8 @@
 ;;; M-o opens line above
 ;;; Code:
 
+(require 'dired)
+
 (defun directory-files-recursive(directory &optional match)
   "Get all files in DIRECTORY recursivley.
 There are three optional arguments:

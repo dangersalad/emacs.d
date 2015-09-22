@@ -5,6 +5,7 @@
 
 ;;; Code:
 
+(setq-default flycheck-emacs-lisp-load-path 'inherit)
 (require 'flycheck)
 (require 's)
 ;; enable flycheck everywhere

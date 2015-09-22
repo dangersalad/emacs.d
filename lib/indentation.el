@@ -31,10 +31,5 @@
 (setq-default tab-width 4)
 (setq-default tab-stop-list (number-sequence 4 120 4))
 
-;; 4 space tabs for html
-(add-hook 'html-mode-hook
-          (lambda()
-            (setq sgml-basic-offset 4)))
-
 (provide 'indentation)
 ;;; indentation.el ends here

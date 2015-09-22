@@ -7,6 +7,8 @@
 ;;; Code:
 
 (defvar erc-hide-list '("JOIN" "PART" "QUIT"))
+(defvar erc-auto-discard-away t)
+(defvar erc-auto-away-message "I have floated off into the ether.")
 (require 'erc)
 (setq erc-modules '(autoaway
                     pcomplete
@@ -81,8 +83,6 @@ MATCH-TYPE NICKUSERHOST MSG"
     (let ((reason (match-string 1 line)))
       (setq erc-away-reason reason))))
 
-(setq erc-auto-discard-away t)
-(setq erc-auto-away-message "I have floated off into the ether.")
 
 (defvar erc-available-p t)
 (defvar erc-x-timeout 600)
