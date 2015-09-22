@@ -15,13 +15,15 @@
  'org-babel-load-languages
  '((ledger . t)))
 
-(add-hook 'ledger-mode-hook
-          (lambda ()
-            (if (not (string= (buffer-name) ledger-schedule-buffer-name))
+(defun look-for-ledger-schedule-file ()
+  "See if there is a file in the same directory as this ledger file with the same basename and a \".rec\" extenxtion. If so, set the `ledger-schedule-file variable' to this file for the local buffer."
+  (if (not (string= (buffer-name) ledger-schedule-buffer-name))
             (set-local-variable
              'ledger-schedule-file
              (replace-regexp-in-string
-              "\\.\\(ledger\\|ldg\\)" ".rec" (buffer-file-name) nil 'literal)))))
+              "\\.\\(ledger\\|ldg\\)" ".rec" (buffer-file-name) nil 'literal))))
+
+(add-hook 'ledger-mode-hook #'look-for-ledger-schedule-file)
 
 
 ;;; ledger-mode-config.el ends here
