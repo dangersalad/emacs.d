@@ -211,6 +211,7 @@ Kept here for easier viewing rather than each package's config.")
 
 ;;enable stuff
 (put 'narrow-to-region 'disabled nil)
+(put 'scroll-left 'disabled nil)
 
 ;; jump tp config
 (set-register ?z '(file  . "~/.emacs.d"))
