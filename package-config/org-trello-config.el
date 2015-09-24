@@ -7,6 +7,7 @@
 
 (require 'org-trello)
 
-
+(eval-after-load 'org-trello
+  (setq org-trello-current-prefix-keybinding "C-c o"))
 
 ;;; org-trello-config.el ends here

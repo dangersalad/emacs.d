@@ -6,6 +6,7 @@
 ;;; Code:
 
 (require 'ledger-mode)
+(require 'set-local-variable)
 
 (add-to-list 'auto-mode-alist '("\\.ledger$" . ledger-mode))
 (add-to-list 'auto-mode-alist '("\\.ldg$" . ledger-mode))
@@ -25,5 +26,15 @@
 
 (add-hook 'ledger-mode-hook #'look-for-ledger-schedule-file)
 
+(setq ledger-reports
+      '(("asset/liabilities" "ledger -f %(ledger-file) bal assets liabilities")
+     ("profit/loss" "ledger -f %(ledger-file) bal income expenses")
+     ("checkbook" "ledger -f %(ledger-file) reg personal:assets:checking")
+     ("cc" "ledger -f %(ledger-file) reg personal:liabilities and visa")
+     ("loans" "ledger -f %(ledger-file) reg personal:liabilities and loan personal:expense and loan")
+     ("bal" "ledger -f %(ledger-file) bal")
+     ("reg" "ledger -f %(ledger-file) reg")
+     ("payee" "ledger -f %(ledger-file) reg @%(payee)")
+     ("account" "ledger -f %(ledger-file) reg %(account)")))
 
 ;;; ledger-mode-config.el ends here

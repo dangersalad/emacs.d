@@ -10,9 +10,6 @@
 (defvar my-custom-lib
   "~/.emacs.d/lib"
   "Custom elisp library.")
-(defvar my-custom-themes
-  "~/.emacs.d/themes"
-  "Customized Emacs themes.")
 (defvar my-customs-file
   "~/.emacs.d/custom.el"
   "File for customizations via \\[customize].")
@@ -42,7 +39,8 @@ Kept here for easier viewing rather than each package's config.")
 ;; my load path
 (add-to-list 'load-path my-custom-lib)
 
-(defvar my-packages '(ag
+(defvar my-packages '(
+                      ag
                       org
                       org-journal
                       org-trello
@@ -50,9 +48,9 @@ Kept here for easier viewing rather than each package's config.")
                       flycheck
                       flycheck-tip
                       flycheck-color-mode-line
-                      ;; powerline
                       linum-relative
-                      auto-complete
+                      company
+                      company-quickhelp
                       magit
                       undo-tree
                       git-gutter-fringe
@@ -63,7 +61,7 @@ Kept here for easier viewing rather than each package's config.")
                       restclient
                       dockerfile-mode
                       go-mode
-                      go-autocomplete
+                      company-go
                       go-eldoc
                       go-scratch
                       less-css-mode
@@ -96,16 +94,14 @@ Kept here for easier viewing rather than each package's config.")
                       sunrise-x-popviewer
                       sunrise-x-tree
                       smartparens
-                      yasnippet)
+                      yasnippet
+                      powerline
+                      zenburn-theme
+                      )
   "A list of packages to install.")
 
 ;; use tcp for server
 (defvar server-use-tcp t)
-
-;; my cusomized zenburn with darker background
-(add-to-list 'custom-theme-load-path my-custom-themes)
-(load-theme 'zenburn t)
-
 
 ;; Packages in lib/
 ;; These can all be compiled
@@ -117,8 +113,9 @@ Kept here for easier viewing rather than each package's config.")
 (require 'marks)                  ; mark tweaks
 (require 'popup-terminal)         ; terminal set to <F11>
 (require 'diminish)               ; hide minor modes in modeline
-;; (require 'local-powerline-themes) ; hide minor modes in modeline
+(require 'zenburn-colors)         ; custom colors for zenburn theme
 (require 'package-loader)         ; auto load packages from MELPA
+(require 'local-powerline-themes) ; hide minor modes in modeline
 (require 'erc-settings)           ; settings for erc
 (require 'unit-file-mode)         ; a major mode for editing systemd unit files
 
@@ -225,9 +222,6 @@ Kept here for easier viewing rather than each package's config.")
 ;; load keybindings
 (load my-keybindings)
 
-;; flat mode line
-(set-face-attribute 'mode-line nil :box nil)
-(set-face-attribute 'mode-line-inactive nil :box nil)
 
 ;; load macros
 (load my-macros)

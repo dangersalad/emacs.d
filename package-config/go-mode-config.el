@@ -17,4 +17,5 @@
            "go build -v && go test && go vet")))
 
 (add-hook 'go-mode-hook 'my-go-hook)
+
 ;;; go-mode-config.el ends here
