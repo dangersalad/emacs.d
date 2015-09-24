@@ -65,4 +65,11 @@
 ;; cycle through errors in prog modes
 (define-key prog-mode-map (kbd "C-c C-n") 'flycheck-tip-cycle)
 
+;; zoom text in frames
+(define-key ctl-x-map [(control ?+)] 'zoom-in/out)
+(define-key ctl-x-map [(control ?=)] 'zoom-in/out)
+(define-key ctl-x-map [(control ?-)] 'zoom-in/out)
+(define-key ctl-x-map [(control ?0)] 'zoom-in/out)
+
+
 ;;; keybindings.el ends here

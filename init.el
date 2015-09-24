@@ -96,6 +96,7 @@ Kept here for easier viewing rather than each package's config.")
                       smartparens
                       yasnippet
                       powerline
+                      zoom-frm
                       zenburn-theme
                       )
   "A list of packages to install.")
