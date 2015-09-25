@@ -188,7 +188,11 @@ Kept here for easier viewing rather than each package's config.")
 (global-set-key (kbd "<f3>") 'calendar)
 
 ;; font for gui
-(add-to-list 'default-frame-alist '(font . "Ubuntu Mono-10"))
+(if (and (> (/ (display-pixel-height) (float (display-mm-height))) 3.5)
+         (> (/ (display-pixel-width) (float (display-mm-width))) 3.5))
+    (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-14"))
+  (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-10")))
+
 
 
 ;; winner mode
