@@ -8,6 +8,7 @@
 (require 'local-powerline-themes)
 (require 'powerline)
 (require 'evil)
+(require 'check-dpi)
 
 ;; make the separator dissapear
 (defmacro pl/nothing (dir)
@@ -16,7 +17,9 @@
                     '((1 1))))
 
 
-(setq powerline-height 25)
+(if (check-dpi-medium-p)
+    (setq powerline-height 20))
+
 (pl/memoize (pl/nothing right))
 (pl/memoize (pl/nothing left))
 (setq powerline-default-separator 'nothing)
