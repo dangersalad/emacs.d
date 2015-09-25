@@ -36,8 +36,13 @@ Kept here for easier viewing rather than each package's config.")
   (concat my-local-dir "/init.el")
   "Local init file to be loaded at the end, ignored by version control.")
 
+(defvar my-email-settings
+  "~/.emacs.d/email"
+  "Email settings location.")
+
 ;; my load path
 (add-to-list 'load-path my-custom-lib)
+(add-to-list 'load-path my-email-settings)
 
 (defvar my-packages '(
                       ag
@@ -228,7 +233,7 @@ Kept here for easier viewing rather than each package's config.")
 (load my-macros)
 
 ;; load email configuration
-(load "~/.emacs.d/email/email-config")
+(require 'email-config)
 
 ;; dired
 (setq dired-listing-switches "-lha --group-directories-first")
