@@ -7,6 +7,7 @@
 
 (setq-default flycheck-emacs-lisp-load-path 'inherit)
 (require 'flycheck)
+(require 'diminish)
 (require 's)
 ;; enable flycheck everywhere
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -28,5 +29,7 @@
   (setq flycheck-keymap-prefix (kbd "C-c e"))
   (define-key flycheck-mode-map flycheck-keymap-prefix
     flycheck-command-map))
+
+(diminish 'flycheck-mode)
 
 ;;; flycheck-config.el ends here

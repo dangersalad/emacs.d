@@ -6,7 +6,8 @@
 ;;; Code:
 
 (require 'undo-tree)
+(require 'diminish)
 (global-undo-tree-mode)
-(diminish 'undo-tree-mode (string 32 #x236b))
+(diminish 'undo-tree-mode)
 
 ;;; undo-tree-config.el ends here

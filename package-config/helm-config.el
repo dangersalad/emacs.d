@@ -6,11 +6,17 @@
 ;;; Code:
 
 (require 'helm-config)
+(require 'diminish)
 
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
 
 (require 'helm)
+(require 'helm-net)
+(require 'helm-buffers)
+(require 'helm-files)
+(require 'helm-command)
+
 
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
@@ -18,7 +24,7 @@
 (helm-autoresize-mode 1)
 
 (when (executable-find "curl")
-  (setq helm-google-suggest-use-curl-p t))
+  (setq helm-net-prefer-curl t))
 
 (setq helm-quick-update                     t ; do not display invisible candidates
       helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
@@ -41,5 +47,7 @@
 (setq helm-autoresize-min-height 25)
 
 (helm-mode 1)
+
+(diminish 'helm-mode)
 
 ;;; helm-config.el ends here
