@@ -190,7 +190,7 @@ Kept here for easier viewing rather than each package's config.")
 ;; font for gui
 (if (and (> (/ (display-pixel-height) (float (display-mm-height))) 3.5)
          (> (/ (display-pixel-width) (float (display-mm-width))) 3.5))
-    (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-14"))
+    (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-12"))
   (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-10")))
 
 
