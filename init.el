@@ -45,12 +45,15 @@ Kept here for easier viewing rather than each package's config.")
 (add-to-list 'load-path my-email-settings)
 
 (defvar my-packages '(
+                      powerline
+                      flycheck
+                      helm
+                      zenburn-theme
                       ag
                       org
                       org-journal
                       org-trello
                       adaptive-wrap
-                      flycheck
                       linum-relative
                       company
                       company-quickhelp
@@ -70,7 +73,6 @@ Kept here for easier viewing rather than each package's config.")
                       less-css-mode
                       ledger-mode
                       flycheck-ledger
-                      helm
                       helm-projectile
                       helm-git-files
                       helm-ag
@@ -97,9 +99,7 @@ Kept here for easier viewing rather than each package's config.")
                       sunrise-x-tree
                       smartparens
                       yasnippet
-                      powerline
                       zoom-frm
-                      zenburn-theme
                       )
   "A list of packages to install.")
 
@@ -118,7 +118,12 @@ Kept here for easier viewing rather than each package's config.")
 (require 'diminish)               ; hide minor modes in modeline
 (require 'zenburn-colors)         ; custom colors for zenburn theme
 (require 'package-loader)         ; auto load packages from MELPA
+(message "Looking for missing packages")
+(install-missing-packages)
 (require 'local-powerline-themes) ; hide minor modes in modeline
+;; init packages
+(message "Loading package configurations")
+(my-package-init)
 (require 'erc-settings)           ; settings for erc
 (require 'unit-file-mode)         ; a major mode for editing systemd unit files
 
@@ -224,11 +229,6 @@ Kept here for easier viewing rather than each package's config.")
 ;; jump tp config
 (set-register ?z '(file  . "~/.emacs.d"))
 
-;; init packages
-(message "Looking for missing packages")
-(install-missing-packages)
-(message "Loading package configurations")
-(my-package-init)
 
 ;; load keybindings
 (load my-keybindings)
