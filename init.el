@@ -51,8 +51,6 @@ Kept here for easier viewing rather than each package's config.")
                       org-trello
                       adaptive-wrap
                       flycheck
-                      flycheck-tip
-                      flycheck-color-mode-line
                       linum-relative
                       company
                       company-quickhelp
@@ -71,7 +69,6 @@ Kept here for easier viewing rather than each package's config.")
                       go-scratch
                       less-css-mode
                       ledger-mode
-                      ;; dklrt
                       flycheck-ledger
                       helm
                       helm-projectile

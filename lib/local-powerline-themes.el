@@ -16,6 +16,7 @@
 (require 'zenburn-colors)
 (require 'zenburn-theme)
 (require 'powerline)
+(require 'flycheck)
 (require 'evil)
 
 (defcustom powerline-evil-tag-style 'verbose
@@ -85,96 +86,144 @@ Valid Values: standard, verbose, visual-expanded"
     "Powerline face 2."
     :group 'powerline)
 
+  (defface powerline-flycheck-base
+    `((t (:foreground ,zenburn-bg-2 :inherit mode-line)))
+    "Powerline flycheck face base."
+    :group 'powerline)
+  (defface powerline-flycheck-ok
+    `((t (:background ,zenburn-green-2 :inherit powerline-flycheck-base)))
+    "Powerline flycheck face for no errors."
+    :group 'powerline)
+  (defface powerline-flycheck-error
+    `((t (:background ,zenburn-red-4 :inherit powerline-flycheck-base)))
+    "Powerline flycheck face for errors."
+    :group 'powerline)
+  (defface powerline-flycheck-warning
+    `((t (:background ,zenburn-yellow-4 :inherit powerline-flycheck-base)))
+    "Powerline flycheck face for warnings."
+    :group 'powerline)
+  (defface powerline-flycheck-info
+    `((t (:background ,zenburn-blue-5 :inherit powerline-flycheck-base)))
+    "Powerline flycheck face for info."
+    :group 'powerline))
 
 
-
-;;;###autoload
-  (defun powerline-evil-face ()
-    "Function to select appropriate face based on `evil-state'."
-    (if (boundp 'evil-state)
-        (let* ((face (intern (concat "powerline-evil-" (symbol-name evil-state) "-face"))))
-          (if (facep face) face 'powerline-active2))
-      'powerline-active2))
-
-  (defun powerline-evil-tag ()
-    "Get customized tag value for current evil state."
-    (let* ((visual-block (and (evil-visual-state-p)
-                              (eq evil-visual-selection 'block)))
-           (visual-line (and (evil-visual-state-p)
-                             (eq evil-visual-selection 'line))))
-      (cond ((eq powerline-evil-tag-style 'visual-expanded)
-             (cond (visual-block " +V+ ")
-                   (visual-line " -V- ")
-                   (t evil-mode-line-tag)))
-            ((eq powerline-evil-tag-style 'verbose)
-             (upcase (concat (symbol-name evil-state)
-                             (cond (visual-block " BLOCK")
-                                   (visual-line " LINE")))))
-            (t evil-mode-line-tag))))
 
 
 ;;;###autoload
-  (defun my-powerline-theme ()
-    "Setup the default mode-line."
-    (interactive)
-    (setq-default mode-line-format
-                  '("%e"
-                    (:eval
-                     (let* ((active (powerline-selected-window-active))
-                            (mode-line (if active 'mode-line 'mode-line-inactive))
-                            (face1 (if active 'powerline-active1 'powerline-inactive1))
-                            (face2 (if active 'powerline-active2 'powerline-inactive2))
-                            (hudface1 (if active 'powerline-hud1 'powerline-inactive1))
-                            (hudface2 (if active 'powerline-hud2 'powerline-inactive2))
-                            (separator-left (intern (format "powerline-%s-%s"
-                                                            (powerline-current-separator)
-                                                            (car powerline-default-separator-dir))))
-                            (separator-right (intern (format "powerline-%s-%s"
-                                                             (powerline-current-separator)
-                                                             (cdr powerline-default-separator-dir))))
-                            (active-modes (mapc (lambda (mode) (condition-case nil
-                                                                   (if (and (symbolp mode) (symbol-value mode))
-                                                                       (add-to-list 'active-modes mode))
-                                                                 (error nil) ))
-                                                minor-mode-list))
-                            (evil-face (if active (powerline-evil-face) 'powerline-inactive1))
-                            (lhs (list (powerline-raw "%*" nil 'l)
-                                       (when powerline-display-buffer-size
-                                         (powerline-buffer-size nil 'l))
-                                       (when powerline-display-mule-info
-                                         (powerline-raw mode-line-mule-info nil 'l))
-                                       (powerline-buffer-id nil 'l)
-                                       (when (and (boundp 'which-func-mode) which-func-mode)
-                                         (powerline-raw which-func-format nil 'l))
-                                       (powerline-raw " ")
-                                       (funcall separator-left mode-line face1)
-                                       (when (boundp 'erc-modified-channels-object)
-                                         (powerline-raw erc-modified-channels-object face1 'l))
-                                       (powerline-major-mode face1 'l)
-                                       (powerline-process face1)
-                                       (powerline-minor-modes face1 'l)
-                                       (powerline-narrow face1 'l)
-                                       (powerline-raw " " face1)
-                                       (funcall separator-left face1 evil-face)
-                                       (powerline-vc evil-face 'r)
-                                       (when (bound-and-true-p nyan-mode)
-                                         (powerline-raw (list (nyan-create)) evil-face 'l))
-                                       (when (or (bound-and-true-p evil-mode)
-                                                 (bound-and-true-p evil-local-mode))
-                                         (powerline-raw (powerline-evil-tag) evil-face 'l))))
-                            (rhs (list (powerline-raw global-mode-string face2 'r)
-                                       (funcall separator-right evil-face face1)
-                                       (powerline-raw (char-to-string #xe0a1) face1 'l)
-                                       (powerline-raw "%4l" face1 'l)
-                                       (powerline-raw ":" face1 'l)
-                                       (powerline-raw "%3c" face1 'r)
-                                       (powerline-hud hudface1 hudface2)
-                                       (funcall separator-right face1 mode-line)
-                                       (powerline-raw " ")
-                                       (powerline-raw "%6p" nil 'r))))
-                       (concat (powerline-render lhs)
-                               (powerline-fill evil-face (powerline-width rhs))
-                               (powerline-render rhs))))))))
+(defun powerline-evil-face ()
+  "Function to select appropriate face based on `evil-state'."
+  (if (boundp 'evil-state)
+      (let* ((face (intern (concat "powerline-evil-" (symbol-name evil-state) "-face"))))
+        (if (facep face) face 'powerline-active2))
+    'powerline-active2))
+
+(defun powerline-evil-tag ()
+  "Get customized tag value for current evil state."
+  (let* ((visual-block (and (evil-visual-state-p)
+                            (eq evil-visual-selection 'block)))
+         (visual-line (and (evil-visual-state-p)
+                           (eq evil-visual-selection 'line))))
+    (cond ((eq powerline-evil-tag-style 'visual-expanded)
+           (cond (visual-block " +V+ ")
+                 (visual-line " -V- ")
+                 (t evil-mode-line-tag)))
+          ((eq powerline-evil-tag-style 'verbose)
+           (upcase (concat (symbol-name evil-state)
+                           (cond (visual-block " BLOCK")
+                                 (visual-line " LINE")))))
+          (t evil-mode-line-tag))))
+
+(defun powerline-flycheck-face ()
+  "Function to select appropriate face based on `flycheck-has-current-errors-p'."
+  (if (bound-and-true-p flycheck-mode)
+      (let* ((face (cond ((flycheck-has-current-errors-p 'error)
+                          'powerline-flycheck-error)
+                         ((flycheck-has-current-errors-p 'warning)
+                          'powerline-flycheck-warning)
+                         ((flycheck-has-current-errors-p 'info)
+                          'powerline-flycheck-info))))
+        (if (facep face) face 'powerline-flycheck-ok))
+    'powerline-active2))
+
+(defun powerline-flycheck-tag ()
+  "Get customized tag value for current flycheck state."
+  (if (bound-and-true-p flycheck-mode)
+  (let* ((tag (cond ((flycheck-has-current-errors-p 'error) "Error")
+                    ((flycheck-has-current-errors-p 'warning) "Warning")
+                    ((flycheck-has-current-errors-p 'info) "Info"))))
+    (concat "  FlyC: " (if (stringp tag) tag "OK") "    "))
+  ""))
+
+
+;;;###autoload
+(defun my-powerline-theme ()
+  "Setup the default mode-line."
+  (interactive)
+  (setq-default mode-line-format
+                '("%e"
+                  (:eval
+                   (let* ((active (powerline-selected-window-active))
+                          (mode-line (if active 'mode-line 'mode-line-inactive))
+                          (face1 (if active 'powerline-active1 'powerline-inactive1))
+                          (face2 (if active 'powerline-active2 'powerline-inactive2))
+                          (hudface1 (if active 'powerline-hud1 'powerline-inactive1))
+                          (hudface2 (if active 'powerline-hud2 'powerline-inactive2))
+                          (separator-left (intern (format "powerline-%s-%s"
+                                                          (powerline-current-separator)
+                                                          (car powerline-default-separator-dir))))
+                          (separator-right (intern (format "powerline-%s-%s"
+                                                           (powerline-current-separator)
+                                                           (cdr powerline-default-separator-dir))))
+                          (active-modes (mapc (lambda (mode) (condition-case nil
+                                                                 (if (and (symbolp mode) (symbol-value mode))
+                                                                     (add-to-list 'active-modes mode))
+                                                               (error nil) ))
+                                              minor-mode-list))
+                          (evil-face (if active (powerline-evil-face) 'powerline-inactive1))
+                          (flycheck-face (if active (powerline-flycheck-face) 'powerline-inactive1))
+                          (lhs (list (powerline-raw "%*" flycheck-face 'l)
+                                     (when powerline-display-buffer-size
+                                       (powerline-buffer-size flycheck-face 'l))
+                                     (when powerline-display-mule-info
+                                       (powerline-raw mode-line-mule-info flycheck-face 'l))
+                                     (powerline-raw " " flycheck-face)
+                                     (funcall separator-left flycheck-face nil)
+                                     (powerline-buffer-id nil 'l)
+                                     (when (and (boundp 'which-func-mode) which-func-mode)
+                                       (powerline-raw which-func-format nil 'l))
+                                     (powerline-raw " ")
+                                     (funcall separator-left mode-line face1)
+                                     (when (boundp 'erc-modified-channels-object)
+                                       (powerline-raw erc-modified-channels-object face1 'l))
+                                     (powerline-major-mode face1 'l)
+                                     (powerline-process face1)
+                                     (powerline-minor-modes face1 'l)
+                                     (powerline-narrow face1 'l)
+                                     (powerline-raw " " face1)
+                                     (funcall separator-left face1 flycheck-face)
+                                     (powerline-raw (powerline-flycheck-tag) flycheck-face 'l)
+                                     (funcall separator-left flycheck-face nil)
+                                     (powerline-vc nil 'r)
+                                     (funcall separator-left nil evil-face)
+                                     (when (bound-and-true-p nyan-mode)
+                                       (powerline-raw (list (nyan-create)) evil-face 'l))
+                                     (when (or (bound-and-true-p evil-mode)
+                                               (bound-and-true-p evil-local-mode))
+                                       (powerline-raw (powerline-evil-tag) evil-face 'l))))
+                          (rhs (list (powerline-raw global-mode-string face2 'r)
+                                     (funcall separator-right evil-face face1)
+                                     (powerline-raw "%4l" face1 'l)
+                                     (powerline-raw "%3c" face1 'r)
+                                     (funcall separator-right face1 flycheck-face)
+                                     (powerline-raw " " flycheck-face)
+                                     (powerline-raw "%6p" flycheck-face 'r)
+                                     (powerline-raw " " flycheck-face)
+                                     (powerline-hud flycheck-face hudface2))))
+                     (concat (powerline-render lhs)
+                             (powerline-fill evil-face (powerline-width rhs))
+                             (powerline-render rhs)))))))
+
 
 (provide 'local-powerline-themes)
 ;;; local-powerline-themes.el ends here
