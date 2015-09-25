@@ -126,7 +126,6 @@ Kept here for easier viewing rather than each package's config.")
 (my-package-init)
 (require 'erc-settings)           ; settings for erc
 (require 'unit-file-mode)         ; a major mode for editing systemd unit files
-(require 'check-dpi)              ; check dpi of screen
 
 (setq newline-and-indent t)   ; enable indentation detection for line-opening
 
@@ -194,9 +193,7 @@ Kept here for easier viewing rather than each package's config.")
 (global-set-key (kbd "<f3>") 'calendar)
 
 ;; font for gui
-(if (check-dpi-medium-p)
-    (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-12"))
-  (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-10")))
+(add-to-list 'default-frame-alist '(font . "Ubuntu Mono-10"))
 
 
 
