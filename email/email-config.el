@@ -1,9 +1,37 @@
 ;;; email-config --- Config for email
 ;;; Commentary:
-;;;
+
+;; example email-settings.el file, minimum it needs it "(provide 'email-settings)"
+
+;; (setq mu4e-maildir "~/mail"
+;;       mu4e-drafts-folder "/accountname/Drafts"
+;;       mu4e-sent-folder   "/accountname/Sent"
+;;       mu4e-trash-folder  "/accountname/Trash"
+;;       mu4e-get-mail-command "offlineimap"
+;;       mu4e-update-interval 180
+;;       message-send-mail-function 'smtpmail-send-it
+;;       smtpmail-stream-type 'starttls
+;;       message-kill-buffer-on-exit t)
+;;
+;; ;; multiple accounts can go here to pick different smtp servers
+;; (defvar my-mu4e-account-alist
+;;   `(("accountname"
+;;      (mu4e-drafts-folder ,mu4e-drafts-folder)
+;;      (mu4e-sent-folder   ,mu4e-sent-folder)
+;;      (mu4e-trash-folder  ,mu4e-trash-folder)
+;;      (user-mail-address  "user@mailserver.tld")
+;;      (smtpmail-default-smtp-server "smtp.mailserver.tld")
+;;      (smtpmail-smtp-server "smtp.mailserver.tld")
+;;      (smtpmail-smtp-service 587)))
+;;   "List of account mu4e accounts to fill in the emails-settings file.")
+
+
 ;;; Configuration for mu4e and related things
 
 ;;; Code:
+
+
+
 
 
 (require 'mu4e nil t)
@@ -21,7 +49,7 @@
   (add-to-list 'mu4e-bookmarks
                '("date:2d..now" "Past 2 days" ?2))
   (add-to-list 'mu4e-bookmarks
-               '("date:7d..now AND NOT flag:trashed" "Recent Inbox" ?r))
+               '("date:7d..now AND NOT flag:trashed AND NOT maildir:sent" "Recent Inbox" ?r))
 
   (defun my-mu4e-set-account ()
     "Set the account for composing a message."
