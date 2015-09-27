@@ -105,6 +105,27 @@ Valid Values: standard, verbose, visual-expanded"
   (defface powerline-flycheck-info
     `((t (:background ,zenburn-blue-5 :inherit powerline-flycheck-base)))
     "Powerline flycheck face for info."
+    :group 'powerline)
+
+  (defface powerline-flycheck-header-base
+    `((t (:foreground ,zenburn-bg-2 :inherit header-line)))
+    "Powerline flycheck face base."
+    :group 'powerline)
+  (defface powerline-flycheck-header-ok
+    `((t (:background ,zenburn-green-2 :inherit powerline-flycheck-header-base)))
+    "Powerline flycheck face for no errors."
+    :group 'powerline)
+  (defface powerline-flycheck-header-error
+    `((t (:background ,zenburn-red-4 :inherit powerline-flycheck-header-base)))
+    "Powerline flycheck face for errors."
+    :group 'powerline)
+  (defface powerline-flycheck-header-warning
+    `((t (:background ,zenburn-yellow-4 :inherit powerline-flycheck-header-base)))
+    "Powerline flycheck face for warnings."
+    :group 'powerline)
+  (defface powerline-flycheck-header-info
+    `((t (:background ,zenburn-blue-5 :inherit powerline-flycheck-header-base)))
+    "Powerline flycheck face for info."
     :group 'powerline))
 
 
@@ -146,14 +167,26 @@ Valid Values: standard, verbose, visual-expanded"
         (if (facep face) face 'powerline-flycheck-ok))
     'powerline-active2))
 
+(defun powerline-flycheck-header-face ()
+  "Function to select appropriate face based on `flycheck-has-current-errors-p'."
+  (if (bound-and-true-p flycheck-mode)
+      (let* ((face (cond ((flycheck-has-current-errors-p 'error)
+                          'powerline-flycheck-header-error)
+                         ((flycheck-has-current-errors-p 'warning)
+                          'powerline-flycheck-header-warning)
+                         ((flycheck-has-current-errors-p 'info)
+                          'powerline-flycheck-header-info))))
+        (if (facep face) face 'powerline-flycheck-header-ok))
+    'powerline-active2))
+
 (defun powerline-flycheck-tag ()
   "Get customized tag value for current flycheck state."
   (if (bound-and-true-p flycheck-mode)
-  (let* ((tag (cond ((flycheck-has-current-errors-p 'error) "Error")
-                    ((flycheck-has-current-errors-p 'warning) "Warning")
-                    ((flycheck-has-current-errors-p 'info) "Info"))))
-    (concat "  FlyC: " (if (stringp tag) tag "OK") "    "))
-  ""))
+      (let* ((tag (cond ((flycheck-has-current-errors-p 'error) "Error")
+                        ((flycheck-has-current-errors-p 'warning) "Warning")
+                        ((flycheck-has-current-errors-p 'info) "Info"))))
+        (concat "  FlyC: " (if (stringp tag) tag "OK") "    "))
+    ""))
 
 
 ;;;###autoload
@@ -222,7 +255,21 @@ Valid Values: standard, verbose, visual-expanded"
                                      (powerline-hud flycheck-face hudface2))))
                      (concat (powerline-render lhs)
                              (powerline-fill evil-face (powerline-width rhs))
-                             (powerline-render rhs)))))))
+                             (powerline-render rhs))))))
+  (setq-default header-line-format
+                '("%e"
+                  (:eval
+                   (let* ((active (powerline-selected-window-active))
+                          (flycheck-face (if active (powerline-flycheck-header-face) 'powerline-inactive1))
+                          (display (list (powerline-raw (powerline-flycheck-tag) flycheck-face 'c)))
+                          (spacer-l (powerline-fill-center
+                                     flycheck-face
+                                     (/ (powerline-width display) 2.0)))
+                          (spacer-r (powerline-fill flycheck-face 0)))
+                     (concat spacer-l
+                             (powerline-render display)
+                             spacer-r
+                             ))))))
 
 
 (provide 'local-powerline-themes)
