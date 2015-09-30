@@ -25,3 +25,4 @@ projectile.cache
 /.trello/atticussterman.el
 /request/
 *.pyc
+/.trello/
