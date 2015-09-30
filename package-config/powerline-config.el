@@ -16,7 +16,7 @@
                     '((1 1))))
 
 
-(setq powerline-height 20)
+(setq powerline-height (+ 2 (frame-char-height)))
 
 (pl/memoize (pl/nothing right))
 (pl/memoize (pl/nothing left))
