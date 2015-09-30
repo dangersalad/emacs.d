@@ -14,7 +14,7 @@
 (zenburn-with-color-variables
   ;; flat mode line and better color
   (set-face-attribute 'region nil :background zenburn-bg-2)
-  (set-face-attribute 'header-line nil :box `(:line-width 2 :color ,zenburn-bg+3))
+  (set-face-attribute 'header-line nil :background zenburn-bg+1)
   (set-face-attribute 'mode-line nil :background zenburn-bg+1 :box nil)
   (set-face-attribute 'mode-line-inactive nil :foreground zenburn-bg+3 :background zenburn-bg+05 :box nil)
   (set-face-attribute 'powerline-active1 nil :background zenburn-bg+05 :foreground zenburn-green+1)

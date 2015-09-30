@@ -261,12 +261,14 @@ Valid Values: standard, verbose, visual-expanded"
                   (:eval
                    (let* ((active (powerline-selected-window-active))
                           (flycheck-face (if active (powerline-flycheck-header-face) 'powerline-inactive1))
+                          (separator-left (intern (format "powerline-%s-%s"
+                                                          (powerline-current-separator)
+                                                          (car powerline-default-separator-dir))))
                           (display (list (powerline-raw (powerline-flycheck-tag) flycheck-face 'c)))
-                          (spacer-l (powerline-fill-center
-                                     flycheck-face
-                                     (/ (powerline-width display) 2.0)))
+                          (spacer-l (list (funcall separator-left flycheck-face flycheck-face)
+                                          (powerline-fill-center flycheck-face (/ (powerline-width display) 2.0))))
                           (spacer-r (powerline-fill flycheck-face 0)))
-                     (concat spacer-l
+                     (concat (powerline-render spacer-l)
                              (powerline-render display)
                              spacer-r
                              ))))))
