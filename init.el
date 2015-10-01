@@ -7,37 +7,40 @@
 (setq inhibit-startup-message t)
 
 ;; file paths vairables
+(defvar emacs-conf-dir
+  (concat (getenv "HOME") "/.emacs.d")
+  "Emacs configuration driectory.")
 (defvar my-custom-lib
-  "~/.emacs.d/lib"
+  (concat emacs-conf-dir "/lib")
   "Custom elisp library.")
 (defvar my-customs-file
-  "~/.emacs.d/custom.el"
+  (concat emacs-conf-dir "/custom.el")
   "File for customizations via \\[customize].")
 (defvar my-backups
-  "~/.emacs.d/tmp/backups"
+  (concat emacs-conf-dir "/tmp/backups")
   "Where backups go.")
 (defvar my-autosave
-  "~/.emacs.d/tmp/autosave"
+  (concat emacs-conf-dir "/tmp/autosave")
   "Where autosaves go.")
 (defvar my-package-configs
-  "~/.emacs.d/package-config"
+  (concat emacs-conf-dir "/package-config")
   "Configuration for MELPA packages.")
 (defvar my-keybindings
-  "~/.emacs.d/keybindings"
+  (concat emacs-conf-dir "/keybindings")
   "Custom keybindings.
 Kept here for easier viewing rather than each package's config.")
 (defvar my-macros
-  "~/.emacs.d/macros"
+  (concat emacs-conf-dir "/macros")
   "Custom keyboard macros.")
 (defvar my-local-dir
-  "~/.emacs.d/local"
+  (concat emacs-conf-dir "/local")
   "Directory for local, non git controlled files.")
 (defvar my-local-init
   (concat my-local-dir "/init.el")
   "Local init file to be loaded at the end, ignored by version control.")
 
 (defvar my-email-settings
-  "~/.emacs.d/email"
+  (concat emacs-conf-dir "/email")
   "Email settings location.")
 
 ;; my load path
@@ -224,7 +227,7 @@ Kept here for easier viewing rather than each package's config.")
 (put 'scroll-left 'disabled nil)
 
 ;; jump tp config
-(set-register ?z '(file  . "~/.emacs.d"))
+(set-register ?z '(file  . emacs-conf-dir))
 
 
 ;; load keybindings
@@ -235,7 +238,10 @@ Kept here for easier viewing rather than each package's config.")
 (load my-macros)
 
 ;; load email configuration
-(require 'email-config)
+(let ((email-settings-file (concat my-email-settings "/email-settings.el")))
+  (if (file-readable-p email-settings-file)
+      (require 'email-config)
+    (message (concat "Missing " email-settings-file ", skipping email setup."))))
 
 ;; dired
 (setq dired-listing-switches "-lha --group-directories-first")
