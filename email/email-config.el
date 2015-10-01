@@ -7,7 +7,6 @@
 ;;       mu4e-drafts-folder "/accountname/Drafts"
 ;;       mu4e-sent-folder   "/accountname/Sent"
 ;;       mu4e-trash-folder  "/accountname/Trash"
-;;       mu4e-get-mail-command "offlineimap"
 ;;       mu4e-update-interval 180
 ;;       message-send-mail-function 'smtpmail-send-it
 ;;       smtpmail-stream-type 'starttls
@@ -42,7 +41,8 @@
 (when (and (require 'mu4e) (require 'email-settings))
   ;; this file must be put here after git checkout
 
-  (setq mail-user-agent 'mu4e-user-agent)
+  (setq mail-user-agent 'mu4e-user-agent
+        mu4e-get-mail-command "~/.emacs.d/bin/email-fetch")
 
   (add-to-list 'mu4e-bookmarks
                '("flag:flagged" "Flagged" ?f))

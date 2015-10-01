@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+soundfile="$HOME/.emacs.d/sounds/erc-nick.wav"
+notify-send -a "IRC - ${2%%!*}" "$3"
+exec 0<>/dev/null paplay $soundfile

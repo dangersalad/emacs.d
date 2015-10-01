@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+
+soundfile="$HOME/.emacs.d/sounds/newmail.wav"
+offlineimap
+newmail="$(mu find flag:unread AND NOT flag:trashed)"
+if [[ -n "$newmail" ]]
+then
+    notify-send -a "Mail" "New Mail Motherfucker"
+    exec 0<>/dev/null paplay $soundfile
+fi

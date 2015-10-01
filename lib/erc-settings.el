@@ -122,6 +122,18 @@ MATCH-TYPE NICKUSERHOST MSG"
   (run-at-time t 60 'erc-x-timeout-away))
 
 
+(defun my-erc-notify (match-type nickuserhost message)
+  "Play a sound based on match from ERC buffers using MATCH-TYPE, NICKUSERHOST, and MESSAGE."
+  (unless (string-match "Server:[0-9]+" nickuserhost)
+    (cond
+     ((eq match-type 'current-nick)
+      (start-process-shell-command
+       "erc-notify" nil
+       (concat
+        "~/.emacs.d/bin/erc-notify '" (symbol-name match-type) "' '" nickuserhost "' '" message "'"))))))
+
+(add-hook 'erc-text-matched-hook 'my-erc-notify)
+(remove-hook 'erc-text-matched-hook 'my-erc-notify)
 
 (provide 'erc-settings)
 
