@@ -10,7 +10,8 @@
 ;;       mu4e-update-interval 180
 ;;       message-send-mail-function 'smtpmail-send-it
 ;;       smtpmail-stream-type 'starttls
-;;       message-kill-buffer-on-exit t)
+;;       message-kill-buffer-on-exit t
+;;       mu4e-user-mail-address-list '("paul@dangersalad.com"))
 ;;
 ;; ;; multiple accounts can go here to pick different smtp servers
 ;; (defvar my-mu4e-account-alist
@@ -42,7 +43,8 @@
   ;; this file must be put here after git checkout
 
   (setq mail-user-agent 'mu4e-user-agent
-        mu4e-get-mail-command "~/.emacs.d/bin/email-fetch")
+        mu4e-get-mail-command "~/.emacs.d/bin/email-fetch"
+        mu4e-compose-dont-reply-to-self t)
 
   (add-to-list 'mu4e-bookmarks
                '("flag:flagged" "Flagged" ?f))
