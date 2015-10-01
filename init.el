@@ -51,6 +51,7 @@ Kept here for easier viewing rather than each package's config.")
                       powerline
                       flycheck
                       helm
+                      ledger-mode
                       zenburn-theme
                       ag
                       org
@@ -74,7 +75,6 @@ Kept here for easier viewing rather than each package's config.")
                       go-eldoc
                       go-scratch
                       less-css-mode
-                      ledger-mode
                       flycheck-ledger
                       helm-projectile
                       helm-git-files

@@ -29,9 +29,33 @@
   (set-face-attribute 'helm-selection nil :background zenburn-bg+2 :weight 'bold)
   (set-face-attribute 'helm-selection-line nil :background zenburn-bg+2)
 
-  ;; (set-face-attribute 'flycheck-color-mode-line-error-face nil :background zenburn-red-2 :foreground zenburn-bg-1)
-  ;; (set-face-attribute 'flycheck-color-mode-line-warning-face nil :background zenburn-yellow-4 :foreground zenburn-bg-1)
-  ;; (set-face-attribute 'flycheck-color-mode-line-info-face nil :background zenburn-blue-2 :foreground zenburn-bg-1)
+
+  (set-face-attribute 'ledger-font-auto-xact-face nil :foreground zenburn-yellow)
+
+  (set-face-attribute 'ledger-font-periodic-xact-face nil :foreground zenburn-green+3)
+
+  (set-face-attribute 'ledger-font-xact-cleared-face nil :foreground zenburn-fg)
+
+  (set-face-attribute 'ledger-font-xact-pending-face nil :foreground zenburn-yellow-2)
+
+  (set-face-attribute 'ledger-font-xact-open-face nil :foreground zenburn-bg-1)
+
+  (set-face-attribute 'ledger-font-payee-uncleared-face nil :foreground zenburn-fg-1)
+
+  (set-face-attribute 'ledger-font-payee-pending-face nil :foreground zenburn-yellow-2)
+
+  (set-face-attribute 'ledger-font-pending-face nil :foreground zenburn-yellow-2)
+
+  (set-face-attribute 'ledger-font-other-face nil :foreground zenburn-blue-1)
+
+  (set-face-attribute 'ledger-font-posting-account-face nil :foreground zenburn-blue-3 )
+
+  (set-face-attribute 'ledger-font-posting-amount-face nil :foreground zenburn-green+4 )
+
+  (set-face-attribute 'ledger-font-posting-date-face nil :foreground zenburn-orange :underline t)
+
+  (set-face-attribute 'ledger-font-report-clickable-face nil :foreground zenburn-fg+1)
+
 
   )
 
