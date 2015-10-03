@@ -120,15 +120,20 @@ Kept here for easier viewing rather than each package's config.")
 (require 'popup-terminal)         ; terminal set to <F11>
 (require 'diminish)               ; hide minor modes in modeline
 (require 'zenburn-colors)         ; custom colors for zenburn theme
+(require 'erc-settings)           ; settings for erc
+(require 'unit-file-mode)         ; a major mode for editing systemd unit files
+
+;; use the package loader functions to install missing packages, then
+;; load all the packages in MY-PACKAGES, either simply requiring
+;; them, or loading package-config/{package name}-config.el to
+;; customize
 (require 'package-loader)         ; auto load packages from MELPA
 (message "Looking for missing packages")
 (install-missing-packages)
-(require 'local-powerline-themes) ; hide minor modes in modeline
+(require 'local-powerline-themes) ; my theme for powerline
 ;; init packages
 (message "Loading package configurations")
 (my-package-init)
-(require 'erc-settings)           ; settings for erc
-(require 'unit-file-mode)         ; a major mode for editing systemd unit files
 
 (setq newline-and-indent t)   ; enable indentation detection for line-opening
 
@@ -172,15 +177,14 @@ Kept here for easier viewing rather than each package's config.")
 ;; setup directories
 (make-directory my-backups t)
 (make-directory my-autosave  t)
-(setq
- backup-by-copying t
- backup-directory-alist `((".*" .  ,my-backups))
- auto-save-file-name-transforms `((".*"  ,my-autosave t))
- auto-save-list-file-prefix  my-autosave
- delete-old-versions t
- kept-new-versions 6
- kept-old-versions 2
- version-control t)
+(setq backup-by-copying t
+      backup-directory-alist `((".*" .  ,my-backups))
+      auto-save-file-name-transforms `((".*"  ,my-autosave t))
+      auto-save-list-file-prefix  my-autosave
+      delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
 
 ;; move windows with Shift + <arrow>
 (require 'windmove)
@@ -197,8 +201,6 @@ Kept here for easier viewing rather than each package's config.")
 
 ;; font for gui
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-10"))
-
-
 
 ;; winner mode
 (when (fboundp 'winner-mode)
@@ -229,10 +231,8 @@ Kept here for easier viewing rather than each package's config.")
 ;; jump tp config
 (set-register ?z '(file  . emacs-conf-dir))
 
-
 ;; load keybindings
 (load my-keybindings)
-
 
 ;; load macros
 (load my-macros)
