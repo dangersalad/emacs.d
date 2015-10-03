@@ -9,4 +9,8 @@
 (require 'evil)
 (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 
+;; toggle vim bindings with C-f1
+(global-set-key (kbd "<f12>") 'evil-local-mode)
+
+
 ;;; evil-config.el ends here

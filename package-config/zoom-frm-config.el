@@ -9,4 +9,11 @@
 
 (setq frame-zoom-font-difference 4)
 
+;; zoom text in frames
+(define-key ctl-x-map [(control ?+)] 'zoom-in/out)
+(define-key ctl-x-map [(control ?=)] 'zoom-in/out)
+(define-key ctl-x-map [(control ?-)] 'zoom-in/out)
+(define-key ctl-x-map [(control ?0)] 'zoom-in/out)
+
+
 ;;; zoom-frm-config.el ends here
