@@ -5,42 +5,38 @@
 
 ;; no splash
 (setq inhibit-startup-message t)
-
 ;; file paths vairables
-(defvar emacs-conf-dir
-  (concat (getenv "HOME") "/.emacs.d")
-  "Emacs configuration driectory.")
 (defvar my-custom-lib
-  (concat emacs-conf-dir "/lib")
+  (expand-file-name "lib" user-emacs-directory)
   "Custom elisp library.")
 (defvar my-customs-file
-  (concat emacs-conf-dir "/custom.el")
+  (expand-file-name "custom.el" user-emacs-directory)
   "File for customizations via \\[customize].")
 (defvar my-backups
-  (concat emacs-conf-dir "/tmp/backups")
+  (expand-file-name "tmp/backups" user-emacs-directory)
   "Where backups go.")
 (defvar my-autosave
-  (concat emacs-conf-dir "/tmp/autosave")
+  (expand-file-name "tmp/autosave" user-emacs-directory)
   "Where autosaves go.")
 (defvar my-package-configs
-  (concat emacs-conf-dir "/package-config")
+  (expand-file-name "package-config" user-emacs-directory)
   "Configuration for MELPA packages.")
 (defvar my-keybindings
-  (concat emacs-conf-dir "/keybindings")
+  (expand-file-name "keybindings" user-emacs-directory)
   "Custom keybindings.
 Kept here for easier viewing rather than each package's config.")
 (defvar my-macros
-  (concat emacs-conf-dir "/macros")
+  (expand-file-name "macros" user-emacs-directory)
   "Custom keyboard macros.")
 (defvar my-local-dir
-  (concat emacs-conf-dir "/local")
+  (expand-file-name "local" user-emacs-directory)
   "Directory for local, non git controlled files.")
 (defvar my-local-init
-  (concat my-local-dir "/init.el")
+  (expand-file-name "init.el" my-local-dir)
   "Local init file to be loaded at the end, ignored by version control.")
 
 (defvar my-email-settings
-  (concat emacs-conf-dir "/email")
+  (expand-file-name "email" user-emacs-directory)
   "Email settings location.")
 
 ;; my load path
@@ -48,61 +44,36 @@ Kept here for easier viewing rather than each package's config.")
 (add-to-list 'load-path my-email-settings)
 
 (defvar my-packages '(
-                      powerline
-                      flycheck
-                      helm
-                      ledger-mode
+                      ;; load theme first
                       zenburn-theme
-                      ag
-                      org
-                      org-journal
-                      org-trello
-                      adaptive-wrap
-                      linum-relative
-                      company
-                      company-quickhelp
-                      magit
-                      undo-tree
-                      git-gutter-fringe
-                      git-timemachine
-                      js2-mode
-                      ac-js2
-                      js2-refactor
-                      restclient
+                      ;; general packages
+                      ag adaptive-wrap linum-relative zoom-frm undo-tree visual-regexp
+                      window-purpose projectile powerline smartparens yasnippet
+                      ;; mpd client
+                      mingus
+                      ;; completion and error checking
+                      company company-quickhelp flycheck
+                      ;; evil stuff
+                      evil evil-leader evil-nerd-commenter evil-surround key-chord
+                      ;; git related
+                      magit git-gutter-fringe git-timemachine ibuffer-vc
+                      ;; helm packages
+                      helm helm-ag helm-descbinds helm-flycheck helm-git-files
+                      helm-go-package helm-projectile helm-swoop
+                      ;; org mode packages
+                      org org-journal org-trello
+                      ;; golang stuff
+                      go-mode go-eldoc go-scratch company-go
+                      ;; javascript
+                      js2-mode js2-refactor ac-js2
+                      ;; ledger stuff
+                      ledger-mode flycheck-ledger
+                      ;; web stuff
+                      web-mode less-css-mode markdown-mode restclient yaml-mode
+                      ;; docker packages
                       dockerfile-mode
-                      go-mode
-                      company-go
-                      go-eldoc
-                      go-scratch
-                      less-css-mode
-                      flycheck-ledger
-                      helm-projectile
-                      helm-git-files
-                      helm-ag
-                      helm-flycheck
-                      helm-descbinds
-                      helm-swoop
-                      helm-go-package
-                      ac-helm
-                      markdown-mode
-                      yaml-mode
-                      web-mode
-                      ibuffer-vc
-                      evil
-                      evil-surround
-                      evil-leader
-                      evil-nerd-commenter
-                      key-chord
-                      visual-regexp
-                      projectile
-                      window-purpose
-                      aggressive-indent
-                      sunrise-commander
-                      sunrise-x-popviewer
-                      sunrise-x-tree
-                      smartparens
-                      yasnippet
-                      zoom-frm
+                      ;; fancy file manager I never use...
+                      sunrise-commander sunrise-x-popviewer sunrise-x-tree
                       )
   "A list of packages to install.")
 
@@ -136,6 +107,10 @@ Kept here for easier viewing rather than each package's config.")
 (my-package-init)
 
 (setq newline-and-indent t)   ; enable indentation detection for line-opening
+
+;; visual line mode
+(global-visual-line-mode 1)
+(add-hook 'minibuffer-setup-hook (lambda () (visual-line-mode -1)))
 
 ;; scroll less aggressivly
 (setq scroll-step 1)
@@ -229,7 +204,7 @@ Kept here for easier viewing rather than each package's config.")
 (put 'scroll-left 'disabled nil)
 
 ;; jump tp config
-(set-register ?z '(file  . emacs-conf-dir))
+(set-register ?z '(file  . user-emacs-directory))
 
 ;; load keybindings
 (load my-keybindings)
