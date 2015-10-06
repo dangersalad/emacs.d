@@ -109,8 +109,8 @@ Kept here for easier viewing rather than each package's config.")
 (setq newline-and-indent t)   ; enable indentation detection for line-opening
 
 ;; visual line mode
-(global-visual-line-mode 1)
-(add-hook 'minibuffer-setup-hook (lambda () (visual-line-mode -1)))
+(global-visual-line-mode 0)
+(add-hook 'prog-mode-hook (lambda () (visual-line-mode 1)))
 
 ;; scroll less aggressivly
 (setq scroll-step 1)
