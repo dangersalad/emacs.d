@@ -130,10 +130,9 @@ MATCH-TYPE NICKUSERHOST MSG"
       (start-process-shell-command
        "erc-notify" nil
        (concat
-        "~/.emacs.d/bin/erc-notify '" (symbol-name match-type) "' '" nickuserhost "' '" message "'"))))))
+        "~/.emacs.d/bin/erc-notify '" (symbol-name match-type) "' '" nickuserhost "' '" message "' 2>>~/erc-notifier.error.log"))))))
 
 (add-hook 'erc-text-matched-hook 'my-erc-notify)
-(remove-hook 'erc-text-matched-hook 'my-erc-notify)
 
 (provide 'erc-settings)
 
