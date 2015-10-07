@@ -39,6 +39,7 @@
 (when (and (require 'mu4e) (require 'email-settings))
   ;; this file must be put here after git checkout
 
+  (global-set-key (kbd "<f9>") 'mu4e)
   (setq mail-user-agent 'mu4e-user-agent
         mu4e-get-mail-command "~/.emacs.d/bin/email-fetch"
         mu4e-compose-dont-reply-to-self t)
