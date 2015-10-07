@@ -1,8 +1,9 @@
 ;;; email-config --- Config for email
 ;;; Commentary:
-
+;;
+;; Configuration for mu4e and related things
 ;; example email-settings.el file, minimum it needs it "(provide 'email-settings)"
-
+;;
 ;; (setq mu4e-maildir "~/mail"
 ;;       mu4e-drafts-folder "/accountname/Drafts"
 ;;       mu4e-sent-folder   "/accountname/Sent"
@@ -24,20 +25,16 @@
 ;;      (smtpmail-smtp-server "smtp.mailserver.tld")
 ;;      (smtpmail-smtp-service 587)))
 ;;   "List of account mu4e accounts to fill in the emails-settings file.")
-
-
-;;; Configuration for mu4e and related things
-
+;;
 ;;; Code:
 
-
-
-
-
 (require 'mu4e nil t)
+(require 'mu4e-contrib nil t)
 (require 'email-settings nil t)
 (require 'smtpmail)
 (require 'gnus-dired)
+(require 'shr)
+(require 'shr-color)
 
 (when (and (require 'mu4e) (require 'email-settings))
   ;; this file must be put here after git checkout
@@ -72,16 +69,18 @@
         (error "No email account found"))))
 
   (add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
-
   (setq mu4e-view-html-plaintext-ratio-heuristic 15)
   (setq mu4e-view-show-images nil)
   (when (fboundp 'imagemagick-register-types)
     (imagemagick-register-types))
   (setq mu4e-view-prefer-html nil)
-  (setq mu4e-html2text-command "html2text -b 72")
+  ;; shr html parser settings
+  (setq shr-inhibit-decoration t
+        shr-color-visible-luminance-min 80
+        shr-color-visible-distance-min 15)
+  (setq mu4e-html2text-command 'mu4e-shr2text)
   (setq mail-user-agent 'mu4e-user-agent)
 
-  (require 'gnus-dired)
   ;; make the `gnus-dired-mail-buffers' function also work on
   ;; message-mode derived modes, such as mu4e-compose-mode
   (defun gnus-dired-mail-buffers ()
