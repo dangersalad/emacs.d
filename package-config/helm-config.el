@@ -16,6 +16,8 @@
 (require 'helm-buffers)
 (require 'helm-files)
 (require 'helm-command)
+(require 'helm-imenu)
+(require 'helm-semantic)
 
 
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
@@ -31,6 +33,14 @@
       helm-buffers-fuzzy-matching           t ; fuzzy matching buffer names when non--nil
       helm-M-x-fuzzy-match                  t ; fuzzy match M-x
       helm-recentf-fuzzy-match              t ; fuzzy match recent files
+      helm-bookmark-show-location           t
+      helm-completion-in-region-fuzzy-match t
+      helm-file-cache-fuzzy-match           t
+      helm-imenu-fuzzy-match                t
+      helm-mode-fuzzy-match                 t
+      helm-locate-fuzzy-match               t
+      helm-quick-update                     t
+      helm-semantic-fuzzy-match             t
       helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
       helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>

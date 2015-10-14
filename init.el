@@ -59,7 +59,7 @@ Kept here for easier viewing rather than each package's config.")
                       magit git-gutter-fringe git-timemachine ibuffer-vc
                       ;; helm packages
                       helm helm-ag helm-descbinds helm-flycheck helm-git-files
-                      helm-go-package helm-projectile helm-swoop
+                      helm-go-package helm-projectile helm-swoop flx
                       ;; org mode packages
                       org org-journal org-trello
                       ;; golang stuff
