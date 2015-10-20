@@ -66,6 +66,8 @@ Kept here for easier viewing rather than each package's config.")
                       go-mode go-eldoc go-scratch company-go
                       ;; javascript
                       js2-mode js2-refactor ac-js2
+                      ;; typescript
+                      typescript-mode tide
                       ;; ledger stuff
                       ledger-mode flycheck-ledger
                       ;; web stuff
