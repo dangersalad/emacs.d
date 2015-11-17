@@ -48,7 +48,7 @@ Kept here for easier viewing rather than each package's config.")
                       zenburn-theme
                       ;; general packages
                       ag adaptive-wrap linum-relative zoom-frm undo-tree visual-regexp
-                      window-purpose projectile powerline smartparens yasnippet
+                      window-purpose projectile powerline smartparens yasnippet linum-relative
                       ;; mpd client
                       mingus
                       ;; completion and error checking
