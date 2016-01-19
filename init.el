@@ -5,6 +5,10 @@
 
 ;; no splash
 (setq inhibit-startup-message t)
+
+;; set GC threshold to highest value here so we can have a speedy init
+(setq gc-cons-threshold most-positive-fixnum)
+
 ;; file paths vairables
 (defvar my-custom-lib
   (expand-file-name "lib" user-emacs-directory)
@@ -185,7 +189,7 @@ Kept here for easier viewing rather than each package's config.")
 
 ;; unique buffer names
 (require 'uniquify)
-(customize-set-variable 'uniquify-buffer-name-style 'post-forward)
+(customize-set-variable 'uniquify-buffer-name-style 'forward)
 
 ;; ibuffer
 (require 'ibuffer)
@@ -227,6 +231,19 @@ Kept here for easier viewing rather than each package's config.")
 ;; load local init if available
 (if (file-readable-p my-local-init)
     (load my-local-init))
+
+;; setup hooks to change GC threshold
+(defun my-minibuffer-setup-hook ()
+  (setq gc-cons-threshold most-positive-fixnum))
+
+(defun my-minibuffer-exit-hook ()
+  (setq gc-cons-threshold 800000))
+
+(add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
+(add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
+
+;; set the value back to normal here (set to max at top of init)
+(setq gc-cons-threshold 800000)
 
 (provide 'init)
 ;;; init.el ends here
