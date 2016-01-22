@@ -12,6 +12,7 @@
 (add-to-list 'purpose-user-mode-purposes '(web-mode . code))
 (add-to-list 'purpose-user-mode-purposes '(prog-mode . code))
 (add-to-list 'purpose-user-mode-purposes '(term-mode . aux))
+(add-to-list 'purpose-user-mode-purposes '(erc-mode . aux))
 (add-to-list 'purpose-user-mode-purposes '(eshell-mode . aux))
 (add-to-list 'purpose-user-mode-purposes '(dired-mode . aux))
 (add-to-list 'purpose-user-mode-purposes '(git-commit-mode . popup))
