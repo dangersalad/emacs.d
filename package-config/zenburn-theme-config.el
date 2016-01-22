@@ -23,7 +23,9 @@
   (set-face-attribute 'mode-line nil :background zenburn-bg+1 :box nil)
   (set-face-attribute 'mode-line-inactive nil :foreground zenburn-bg+3 :background zenburn-bg+05 :box nil)
   ;; italic comments
-  (set-face-attribute 'font-lock-comment-face nil :slant 'italic))
+  (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
+  ;; set the verticle border color
+  (set-face-attribute 'vertical-border nil :foreground zenburn-bg+1))
 
 ;; powerline colors
 (with-eval-after-load 'powerline
@@ -43,8 +45,8 @@
 ;; helm faces
 (with-eval-after-load 'helm
   (zenburn-with-color-variables
-     (set-face-attribute 'helm-source-header nil :background zenburn-bg+2 :height 1.3 :box '(:style nil))
-     (set-face-attribute 'helm-selection nil :background zenburn-bg+2 :weight 'bold)))
+    (set-face-attribute 'helm-source-header nil :background zenburn-bg+2 :height 1.3 :box '(:style nil))
+    (set-face-attribute 'helm-selection nil :background zenburn-bg+2 :weight 'bold)))
 (with-eval-after-load 'helm-utils
   (zenburn-with-color-variables
     (set-face-attribute 'helm-selection-line nil :background zenburn-bg+2)))
