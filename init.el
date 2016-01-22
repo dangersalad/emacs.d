@@ -65,13 +65,13 @@ Kept here for easier viewing rather than each package's config.")
                       helm helm-ag helm-descbinds helm-flycheck helm-git-files
                       helm-go-package helm-projectile helm-swoop flx
                       ;; org mode packages
-                      org org-journal org-trello
+                      org org-journal ; org-trello
                       ;; golang stuff
                       go-mode go-eldoc go-scratch company-go
                       ;; javascript
                       js2-mode js2-refactor ac-js2
                       ;; typescript
-                      typescript-mode tide
+                      ;; typescript-mode tide
                       ;; ledger stuff
                       ledger-mode flycheck-ledger
                       ;; web stuff
@@ -79,7 +79,7 @@ Kept here for easier viewing rather than each package's config.")
                       ;; docker packages
                       dockerfile-mode
                       ;; fancy file manager I never use...
-                      sunrise-commander sunrise-x-popviewer sunrise-x-tree
+                      ;; sunrise-commander sunrise-x-popviewer sunrise-x-tree
                       )
   "A list of packages to install.")
 
