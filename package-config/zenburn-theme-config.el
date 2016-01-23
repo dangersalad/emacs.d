@@ -25,7 +25,7 @@
   ;; italic comments
   (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
   ;; set the verticle border color
-  (set-face-attribute 'vertical-border nil :foreground zenburn-bg+1))
+  (set-face-attribute 'vertical-border nil :foreground zenburn-bg-1))
 
 ;; powerline colors
 (with-eval-after-load 'powerline
@@ -68,5 +68,13 @@
     (set-face-attribute 'ledger-font-posting-date-face nil :foreground zenburn-orange :underline t)
     (set-face-attribute 'ledger-font-report-clickable-face nil :foreground zenburn-fg+1)))
 
+;; faces for avy
+(with-eval-after-load 'avy
+  (zenburn-with-color-variables
+    (set-face-attribute 'avy-background-face nil :foreground zenburn-fg-1 :background zenburn-bg-1)
+    (set-face-attribute 'avy-lead-face-0 nil :foreground zenburn-fg+1 :background zenburn-blue-5)
+    (set-face-attribute 'avy-lead-face-1 nil :foreground zenburn-fg+1 :background zenburn-bg-2)
+    (set-face-attribute 'avy-lead-face-2 nil :foreground zenburn-fg+1 :background zenburn-blue-4)
+    (set-face-attribute 'avy-lead-face nil :foreground zenburn-fg+1 :background zenburn-red-4)))
 
 ;;; zenburn-theme-config.el ends here
