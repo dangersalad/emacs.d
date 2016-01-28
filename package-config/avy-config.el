@@ -13,7 +13,7 @@
 (avy-setup-default)
 (global-set-key (kbd "C-;") 'avy-goto-char)
 
-(global-set-key (kbd "C-c C-f") 'avy-goto-char-in-line)
+(global-set-key (kbd "C-c f") 'avy-goto-char-in-line)
 
 (global-set-key (kbd "C-:") 'avy-goto-word-or-subword-1)
 
