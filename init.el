@@ -69,6 +69,8 @@ Kept here for easier viewing rather than each package's config.")
                       org org-journal ; org-trello
                       ;; golang stuff
                       go-mode go-eldoc go-scratch company-go
+                      ;; haskell stuff
+                      haskell-mode company-ghc
                       ;; javascript
                       js2-mode js2-refactor ac-js2
                       ;; typescript
