@@ -8,6 +8,8 @@
 (require 'ace-window)
 
 (setq aw-background nil)
+
+(global-set-key (kbd "C-x o") 'ace-window)
 (global-set-key (kbd "C-c SPC") 'ace-window)
 
 
