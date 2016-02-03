@@ -248,5 +248,9 @@ Kept here for easier viewing rather than each package's config.")
 ;; set the value back to normal here (set to max at top of init)
 (setq gc-cons-threshold 800000)
 
+;; zone out after a bit
+(require 'zone)
+(zone-when-idle 300)
+
 (provide 'init)
 ;;; init.el ends here
