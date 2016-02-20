@@ -237,9 +237,11 @@ Kept here for easier viewing rather than each package's config.")
 
 ;; setup hooks to change GC threshold
 (defun my-minibuffer-setup-hook ()
+  "Setup the minibuffer."
   (setq gc-cons-threshold most-positive-fixnum))
 
 (defun my-minibuffer-exit-hook ()
+  "Called when exiting the minibuffer."
   (setq gc-cons-threshold 800000))
 
 (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
