@@ -66,5 +66,20 @@
  'org-babel-load-languages
  '((sh . t)))
 
+;; expand logbook on org all expand
+(defun my/expand-logbook-drawer ()
+ "Expand the closest logbook drawer."
+ (interactive)
+ (search-forward ":LOGBOOK:")
+ (org-cycle))
+
+(defun my/org-logbook-cycle-hook (my/var/curr-state)
+  "When the MY/VAR/CURR-STATE is \"all\", open up logbooks."
+    (interactive)
+    (message "State changed")
+    (when ( my/var/curr-state "all")   ;This comparison doesn't work, error: wrong argument, number-or-marker-p
+      (my/expand-logbook-drawer)))
+
+(add-hook 'org-cycle-hook 'my/org-logbook-cycle-hook)
 
 ;;; org-config.el ends here
