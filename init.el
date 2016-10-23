@@ -4,6 +4,13 @@
 ;;; Code:
 
 ;; no splash
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq inhibit-startup-message t)
 
 ;; set GC threshold to highest value here so we can have a speedy init
@@ -53,7 +60,7 @@ Kept here for easier viewing rather than each package's config.")
                       ;; general packages
                       ag adaptive-wrap linum-relative zoom-frm undo-tree visual-regexp
                       window-purpose projectile powerline smartparens yasnippet linum-relative
-                      avy ace-window
+                      avy ace-window znc
                       ;; mpd client
                       mingus
                       ;; completion and error checking
@@ -249,10 +256,6 @@ Kept here for easier viewing rather than each package's config.")
 
 ;; set the value back to normal here (set to max at top of init)
 (setq gc-cons-threshold 800000)
-
-;; zone out after a bit
-(require 'zone)
-(zone-when-idle 300)
 
 (provide 'init)
 ;;; init.el ends here

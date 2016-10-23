@@ -27,3 +27,4 @@ projectile.cache
 *.pyc
 /.trello/
 *.log
+network-security.data

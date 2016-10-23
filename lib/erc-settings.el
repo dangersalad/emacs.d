@@ -10,8 +10,7 @@
 (defvar erc-auto-discard-away t)
 (defvar erc-auto-away-message "I have floated off into the ether.")
 (require 'erc)
-(setq erc-modules '(autoaway
-                    pcomplete
+(setq erc-modules '(pcomplete
                     netsplit
                     fill
                     button
