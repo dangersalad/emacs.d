@@ -22,5 +22,6 @@
 (define-key Info-mode-map (kbd "<mouse-8>") 'Info-history-back)
 (define-key Info-mode-map (kbd "<mouse-9>") 'Info-history-forward)
 
+(global-set-key (kbd "M-S-SPC") 'mark-word-at-point)
 
 ;;; keybindings.el ends here

@@ -145,6 +145,24 @@ window by ARG lines."
      (t "mid"))))
 
 
+(defun mark-word-at-point (arg)
+  "Select word on or before current point, and move point to beginning of word.
+
+With a prefix ARG, first prompts for type of things and select
+ARG things but you need to move the point to the beginnig of
+thing first.
+
+But if a thing has been selected, then extend the selection by
+one thing on the other side of the point (So to select backwards,
+select to the right first)."
+  (interactive "P")
+  (cond ((or arg mark-active)
+         (when (consp arg) (setq current-prefix-arg nil))
+         (call-interactively 'mark-word))
+        (t
+         (skip-syntax-backward "w_")
+         (mark-word))))
+
 
 (provide 'custom-functions)
 
