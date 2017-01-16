@@ -257,5 +257,8 @@ Kept here for easier viewing rather than each package's config.")
 ;; set the value back to normal here (set to max at top of init)
 (setq gc-cons-threshold 800000)
 
+;; set global subword mode
+(global-subword-mode)
+
 (provide 'init)
 ;;; init.el ends here
