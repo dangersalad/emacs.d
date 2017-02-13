@@ -62,9 +62,11 @@
           (lambda ()
             (add-hook 'after-save-hook 'org-babel-tangle nil 'local-please)))
 
+(setq org-ditaa-jar-path "/usr/share/java/ditaa/ditaa-0_10.jar")
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((sh . t)))
+ '((sh . t)
+   (ditaa . t)))
 
 ;; expand logbook on org all expand
 (defun my/expand-logbook-drawer ()

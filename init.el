@@ -60,7 +60,7 @@ Kept here for easier viewing rather than each package's config.")
                       ;; general packages
                       ag adaptive-wrap linum-relative zoom-frm undo-tree visual-regexp
                       window-purpose projectile powerline smartparens yasnippet linum-relative
-                      avy ace-window znc multiple-cursors
+                      avy ace-window znc multiple-cursors i3wm fontawesome
                       ;; mpd client
                       mingus
                       ;; completion and error checking

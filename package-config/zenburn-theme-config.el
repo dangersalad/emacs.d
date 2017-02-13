@@ -58,7 +58,7 @@
     (set-face-attribute 'ledger-font-periodic-xact-face nil :foreground zenburn-green+3)
     (set-face-attribute 'ledger-font-xact-cleared-face nil :foreground zenburn-fg)
     (set-face-attribute 'ledger-font-xact-pending-face nil :foreground zenburn-yellow-2)
-    (set-face-attribute 'ledger-font-xact-open-face nil :foreground zenburn-bg-1)
+    ;; (set-face-attribute 'ledger-font-xact-open-face nil :foreground zenburn-bg-1)
     (set-face-attribute 'ledger-font-payee-uncleared-face nil :foreground zenburn-fg-1)
     (set-face-attribute 'ledger-font-payee-pending-face nil :foreground zenburn-yellow-2)
     (set-face-attribute 'ledger-font-pending-face nil :foreground zenburn-yellow-2)
