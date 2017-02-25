@@ -71,7 +71,7 @@ Kept here for easier viewing rather than each package's config.")
                       magit git-gutter-fringe git-timemachine ibuffer-vc
                       ;; helm packages
                       helm helm-ag helm-descbinds helm-flycheck helm-git-files
-                      helm-go-package helm-projectile helm-swoop flx
+                      helm-go-package helm-projectile helm-swoop flx helm-tramp
                       ;; org mode packages
                       org org-journal ; org-trello
                       ;; golang stuff
@@ -138,6 +138,8 @@ Kept here for easier viewing rather than each package's config.")
 ;; tramp settings
 (require 'tramp)
 (setq tramp-default-method "ssh")
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+(defalias 'exit-tramp 'tramp-cleanup-all-buffers)
 
 (add-hook 'before-save-hook (lambda ()
                               (if (equal major-mode 'markdown-mode)
