@@ -28,3 +28,5 @@ projectile.cache
 /.trello/
 *.log
 network-security.data
+/rust-playground/
+/custom.el

@@ -60,7 +60,8 @@ Kept here for easier viewing rather than each package's config.")
                       ;; general packages
                       ag adaptive-wrap linum-relative zoom-frm undo-tree visual-regexp
                       window-purpose projectile powerline smartparens yasnippet linum-relative
-                      avy ace-window znc multiple-cursors i3wm fontawesome
+                      avy ace-window znc multiple-cursors i3wm fontawesome highlight-context-line
+                      pomidor toml-mode
                       ;; mpd client
                       mingus
                       ;; completion and error checking
@@ -72,10 +73,13 @@ Kept here for easier viewing rather than each package's config.")
                       ;; helm packages
                       helm helm-ag helm-descbinds helm-flycheck helm-git-files
                       helm-go-package helm-projectile helm-swoop flx helm-tramp
+                      helm-spotify-plus
                       ;; org mode packages
                       org org-journal ; org-trello
                       ;; golang stuff
-                      go-mode go-eldoc go-scratch company-go
+                      go-mode go-eldoc go-scratch company-go protobuf-mode
+                      ;; rust
+                      rust-mode rust-playground flycheck-rust cargo racer
                       ;; haskell stuff
                       haskell-mode company-ghc
                       ;; javascript
